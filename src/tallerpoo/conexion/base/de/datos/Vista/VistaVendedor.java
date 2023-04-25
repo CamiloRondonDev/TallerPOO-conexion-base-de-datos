@@ -34,7 +34,7 @@ public final class VistaVendedor extends javax.swing.JFrame {
     /**
      * Creates new form VistaVendedor
      */
-    public VistaVendedor() {
+    public VistaVendedor(Usuarios user) {
         initComponents();
          this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(imgVendedor);
@@ -42,7 +42,12 @@ public final class VistaVendedor extends javax.swing.JFrame {
         DameCliente();
         DameProducto();
         tipoProd = Combo_Producto.getSelectedItem().toString();
+        mostrarNombreVend.setText(user.nombre);
         
+    }
+
+    private VistaVendedor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @SuppressWarnings("unchecked")
@@ -60,6 +65,8 @@ public final class VistaVendedor extends javax.swing.JFrame {
         imgVendedor = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
         btnCalcular = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        mostrarNombreVend = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,6 +118,9 @@ public final class VistaVendedor extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("VENDEDOR");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,14 +151,28 @@ public final class VistaVendedor extends javax.swing.JFrame {
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(197, 197, 197)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(mostrarNombreVend, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(mostrarNombreVend)))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Combo_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,7 +384,9 @@ public final class VistaVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JComboBox<String> mostrarClienteCB;
+    private javax.swing.JLabel mostrarNombreVend;
     private javax.swing.JTextField valUnit;
     // End of variables declaration//GEN-END:variables
 }

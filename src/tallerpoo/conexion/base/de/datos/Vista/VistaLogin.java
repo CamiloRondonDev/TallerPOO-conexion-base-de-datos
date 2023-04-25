@@ -163,7 +163,7 @@ public class VistaLogin extends javax.swing.JFrame {
        VistaAdmin vistaAdmin = new VistaAdmin(user);
        vistaAdmin.setVisible(true);
        }else if(user.logAux == 6){  
-       VistaVendedor vistaVendedor  = new VistaVendedor();
+       VistaVendedor vistaVendedor  = new VistaVendedor(user);
        vistaVendedor.setVisible(true);
            //JOptionPane.showMessageDialog(null, "estamos trabajando en el vendedor");
        }else{

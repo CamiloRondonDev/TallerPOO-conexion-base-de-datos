@@ -92,10 +92,12 @@ class BaseDatos {
     }
     
     
-    public void RegistrarVenta(){
+    public int RegistrarVenta(Cliente cliente, Productos product , int cantidad , float total){
     
         
-        //Productos prod = new Productos();
+        Productos prod ;
+         int valor = 0;
+        //Cliente cliente;
         Venta venta = new Venta();
 
         try {
@@ -109,23 +111,68 @@ class BaseDatos {
 
             
             //String insert = "insert into datos (nombre, cedula, correo ) values" + "('" + nombre + "'," + "'" + dni + "',"+ "'" + correo + "')";
-            String insert = "insert into venta (idProducto,idCliente,cantidad,valorUnitario,valorTotal,fecha) values(1 ,2 ,3,2000,6000,CURDATE())";
+            //String insert = "insert into venta (idProducto,idCliente,cantidad,valorUnitario,valorTotal,fecha) values(1 ,2 ,3,2000,6000,CURDATE())";
+            String insert = "insert into venta (idProducto,idCliente,cantidad,valorUnitario,valorTotal,fecha) values("+product.id+","+cliente.id+" ,"+cantidad+","+product.precioVenta+","+total+",CURDATE())";
             System.out.println("-->resultado<--"+insert);
-            int valor =  inserData.executeUpdate(insert);
+            valor =  inserData.executeUpdate(insert);
             System.out.println("retorno > " + valor);
+            return valor;
             
-
-
-        
 
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "error de conexion" + e);
 
         }
+        
+        return valor;
+    
+    }
     
     
     
+     public Cliente ConsultarClientes(String clien ) {
+
+         Cliente cliente = new Cliente();
+
+        try {
+            con = null;
+            final String drive = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/poo";
+            String userBD = "root";
+            String password = "";
+
+            Class.forName(drive);
+            con = DriverManager.getConnection(url, userBD, password);
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM cliente");//consulta a realizar
+            //JOptionPane.showMessageDialog(null, "conexion correcta");
+            System.out.println("consulta exitosa");
+
+            while (rs.next()) {
+                cliente.id = rs.getInt("id");
+                cliente.nombre = rs.getString("nombre");
+                cliente.dni = rs.getString("dni");
+                cliente.tel = rs.getString("tel");
+                cliente.cel = rs.getString("cel");
+                cliente.mail = rs.getString("mail"); 
+                cliente.direccion = rs.getString("direccion");
+                
+                if(cliente.nombre.equals(clien)){
+                return cliente;
+                }
+                
+            }
+            
+        
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "error de conexion" + e);
+
+        }
+
+        return cliente;
+
     }
 
 }

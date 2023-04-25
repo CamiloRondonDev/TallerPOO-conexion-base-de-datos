@@ -208,6 +208,8 @@ public final class VistaVendedor extends javax.swing.JFrame {
          float total = (float) (cantidad * prod.precioVenta);
          ValorTotal_text.setText(String.valueOf(total));
          
+         bd.RegistrarVenta();
+         
          
          
        

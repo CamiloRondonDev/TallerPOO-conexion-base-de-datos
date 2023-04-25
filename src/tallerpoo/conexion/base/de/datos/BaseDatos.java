@@ -5,12 +5,13 @@
  */
 package tallerpoo.conexion.base.de.datos;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import tallerpoo.conexion.base.de.datos.entidades.Productos;
+import tallerpoo.conexion.base.de.datos.entidades.*;
 
 /**
  *
@@ -88,6 +89,43 @@ class BaseDatos {
 
         return prod;
 
+    }
+    
+    
+    public void RegistrarVenta(){
+    
+        
+        //Productos prod = new Productos();
+        Venta venta = new Venta();
+
+        try {
+            con = null;
+
+
+             Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement  inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            
+            //String insert = "insert into datos (nombre, cedula, correo ) values" + "('" + nombre + "'," + "'" + dni + "',"+ "'" + correo + "')";
+            String insert = "insert into venta (idProducto,idCliente,cantidad,valorUnitario,valorTotal,fecha) values(1 ,2 ,3,2000,6000,CURDATE())";
+            System.out.println("-->resultado<--"+insert);
+            int valor =  inserData.executeUpdate(insert);
+            System.out.println("retorno > " + valor);
+            
+
+
+        
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "error de conexion" + e);
+
+        }
+    
+    
+    
     }
 
 }

@@ -3,12 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/BaseDatos.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/VistaVendedor.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/VistaLogin.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/ValidarLogin.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/Usuarios.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/VistaAdmin.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/TallerPOOConexionBaseDeDatos.java</file>
         </group>
     </open-files>
 </project-private>

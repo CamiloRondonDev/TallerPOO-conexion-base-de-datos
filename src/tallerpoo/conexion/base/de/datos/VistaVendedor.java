@@ -15,12 +15,13 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import tallerpoo.conexion.base.de.datos.entidades.Productos;
 
 /**
  *
  * @author hp
  */
-public class VistaVendedor extends javax.swing.JFrame {
+public final class VistaVendedor extends javax.swing.JFrame {
 
    private ImageIcon imagen;
    private Icon icono;
@@ -33,11 +34,12 @@ public class VistaVendedor extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(imgVendedor);
-        this.aggImg(this.imgVendedor, "src/tallerpoo/conexion/base/de/datos/cajero.png");
+        this.aggImg(this.imgVendedor, "src/tallerpoo/conexion/base/de/datos/cajero.png");    
         DameUsuario();
+        DameProducto();
+        String tipoProd = Combo_Producto.getSelectedItem().toString();
         
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,13 +49,13 @@ public class VistaVendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        valUnit = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Combo_Producto = new javax.swing.JComboBox<>();
-        mostrarProductoCB = new javax.swing.JComboBox<>();
+        mostrarClienteCB = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         imgVendedor = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
@@ -76,17 +78,16 @@ public class VistaVendedor extends javax.swing.JFrame {
 
         jLabel3.setText("Valor total");
 
-        Combo_Producto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Producto" }));
         Combo_Producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Combo_ProductoActionPerformed(evt);
             }
         });
 
-        mostrarProductoCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente" }));
-        mostrarProductoCB.addActionListener(new java.awt.event.ActionListener() {
+        mostrarClienteCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente" }));
+        mostrarClienteCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrarProductoCBActionPerformed(evt);
+                mostrarClienteCBActionPerformed(evt);
             }
         });
 
@@ -106,11 +107,11 @@ public class VistaVendedor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mostrarProductoCB, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mostrarClienteCB, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField1)
+                        .addComponent(valUnit)
                         .addComponent(jTextField4)
                         .addComponent(Combo_Producto, 0, 113, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -140,9 +141,9 @@ public class VistaVendedor extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(valUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mostrarProductoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(mostrarClienteCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(imgVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
@@ -170,16 +171,26 @@ public class VistaVendedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Combo_ProductoActionPerformed
 
-    private void mostrarProductoCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarProductoCBActionPerformed
+    private void mostrarClienteCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarClienteCBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mostrarProductoCBActionPerformed
+    }//GEN-LAST:event_mostrarClienteCBActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        
-         String tipoUsuer = mostrarProductoCB.getSelectedItem().toString();
-         System.out.println(" nombre--->> "+tipoUsuer);
-        
+        BaseDatos bd = new BaseDatos();
+        Productos prod = new Productos();
+         String tipoUsuer = mostrarClienteCB.getSelectedItem().toString();
+         String tipoProd = Combo_Producto.getSelectedItem().toString();
+         System.out.println(" nombre--->> " + tipoUsuer);
+         System.out.println(" producto--->> " + tipoProd);
+         
+         prod = bd.ConsultarProductos(tipoProd);
+         
+         System.out.println("precio venta-->"+prod.precioVenta);
+         valUnit.setText(String.valueOf(prod.precioVenta));
+         
+       
+         
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void aggImg(JLabel labelEjm, String ruta){
@@ -251,7 +262,7 @@ public class VistaVendedor extends javax.swing.JFrame {
 
             while (rs.next()) {
                 user.setNombre(rs.getNString("nombre"));
-                mostrarProductoCB.addItem(user.toString());                 
+                mostrarClienteCB.addItem(user.toString());                 
             }
 
         } catch (Exception e) {
@@ -264,7 +275,7 @@ public class VistaVendedor extends javax.swing.JFrame {
     
      public void DameProducto(){
         Connection con;
-        Usuarios user = new Usuarios();
+        Productos prod = new Productos();
         try {
             con = null;
             final String drive = "com.mysql.cj.jdbc.Driver";
@@ -275,12 +286,12 @@ public class VistaVendedor extends javax.swing.JFrame {
             Class.forName(drive);
             con = DriverManager.getConnection(url, userBD, password);
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM usuarios");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM producto");
             System.out.println("consulta exitosa");
 
             while (rs.next()) {
-                user.setNombre(rs.getNString("nombre"));
-                mostrarProductoCB.addItem(user.toString());                 
+                prod.setNombre(rs.getNString("nombre"));
+                Combo_Producto.addItem(prod.toString());                 
             }
 
         } catch (Exception e) {
@@ -289,7 +300,7 @@ public class VistaVendedor extends javax.swing.JFrame {
         }
  
     }
-
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_Producto;
     private javax.swing.JButton btnRegistrar;
@@ -297,9 +308,9 @@ public class VistaVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JComboBox<String> mostrarProductoCB;
+    private javax.swing.JComboBox<String> mostrarClienteCB;
+    private javax.swing.JTextField valUnit;
     // End of variables declaration//GEN-END:variables
 }

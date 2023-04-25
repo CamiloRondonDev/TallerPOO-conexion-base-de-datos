@@ -26,11 +26,11 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="mostrarProductoCB" min="-2" pref="113" max="-2" attributes="0"/>
+                  <Component id="mostrarClienteCB" min="-2" pref="113" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="1" max="32767" attributes="0"/>
+                      <Component id="valUnit" alignment="1" max="32767" attributes="0"/>
                       <Component id="jTextField4" alignment="1" max="32767" attributes="0"/>
                       <Component id="Combo_Producto" alignment="1" pref="113" max="32767" attributes="0"/>
                   </Group>
@@ -67,9 +67,9 @@
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <Component id="valUnit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="mostrarProductoCB" min="-2" max="-2" attributes="0"/>
+                      <Component id="mostrarClienteCB" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="imgVendedor" min="-2" pref="208" max="-2" attributes="0"/>
               </Group>
@@ -89,7 +89,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="valUnit">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField3">
       <Events>
@@ -114,9 +114,7 @@
     <Component class="javax.swing.JComboBox" name="Combo_Producto">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Producto"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
@@ -126,7 +124,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="mostrarProductoCB">
+    <Component class="javax.swing.JComboBox" name="mostrarClienteCB">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
@@ -135,7 +133,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostrarProductoCBActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostrarClienteCBActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

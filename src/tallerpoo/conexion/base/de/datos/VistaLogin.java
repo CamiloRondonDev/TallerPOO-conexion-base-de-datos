@@ -61,12 +61,14 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
 
+        cedula_text.setText("100733111");
         cedula_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedula_textActionPerformed(evt);
             }
         });
 
+        nombre_text.setText("Dayana");
         nombre_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombre_textActionPerformed(evt);

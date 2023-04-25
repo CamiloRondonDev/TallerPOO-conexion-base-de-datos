@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import tallerpoo.conexion.base.de.datos.entidades.Productos;
 
 /**
  *
@@ -99,5 +100,5 @@ class ValidarLogin {
         return user;
 
     }
-
+    
 }

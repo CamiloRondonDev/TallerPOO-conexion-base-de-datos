@@ -257,6 +257,9 @@ public final class VistaVendedor extends javax.swing.JFrame {
          System.out.println(" producto--->> " + tipoProd);
          
          prod = bd.ConsultarProductos(tipoProd);
+         if(prod.stock<=0){
+             JOptionPane.showMessageDialog(null, "Producto agotado");
+         }
          
          System.out.println("precio venta-->"+prod.precioVenta);
          valUnit.setText(String.valueOf(prod.precioVenta));

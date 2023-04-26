@@ -11,6 +11,7 @@ package tallerpoo.conexion.base.de.datos.Vista;
  */
 public class VistaSuperUser extends javax.swing.JFrame {
 
+    String tipoUsuer;
     /**
      * Creates new form VistaSuperUser
      */
@@ -28,32 +29,91 @@ public class VistaSuperUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        accion_realizar = new javax.swing.JComboBox<>();
+        btnAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Eres el super - usuario");
+        accion_realizar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Agregar Admin", "Agregar Vendedor", "Agregar Cliente", "Agregar Proveedor", "Bloq. Admin", "Bloq. Vendedor", "Bloq. Proveedor", "Registro ventas" }));
+
+        btnAceptar.setText("ACEPTAR");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(accion_realizar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addComponent(accion_realizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        // TODO add your handling code here:
+        tipoUsuer = accion_realizar.getSelectedItem().toString();
+        System.out.println(tipoUsuer);
+        
+        switch (tipoUsuer) {
+            case "Agregar Admin":
+                System.out.println("AGG ADMIN");
+                break;
+
+            case "Agregar Vendedor":
+                System.out.println("AGG VENDEDOR");
+                break;
+
+            case "Agregar Cliente":
+                System.out.println("AGG CLIENTE");
+                break;
+
+            case "Agregar Proveedor":
+                System.out.println("AGG PROVEE");
+                break;
+
+            case "Bloq. Admin":
+                System.out.println("BLOQ ADMIN");
+                break;
+
+            case "Bloq. Vendedor":
+                System.out.println("BLOQ VENDEDOR");
+                break;
+
+            case "Bloq. Proveedor":
+                System.out.println("BLOQ PROVEE");
+                break;
+
+            case "Registro ventas":
+                System.out.println("REG VENTAS");
+                break;
+
+            default:
+                System.out.println("selecciona alguna");
+                break;
+
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,6 +149,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> accion_realizar;
+    private javax.swing.JButton btnAceptar;
     // End of variables declaration//GEN-END:variables
 }

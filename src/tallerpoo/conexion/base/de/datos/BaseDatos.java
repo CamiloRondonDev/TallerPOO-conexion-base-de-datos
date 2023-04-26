@@ -164,7 +164,6 @@ class BaseDatos {
                 
             }
             
-        
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "error de conexion" + e);

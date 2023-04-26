@@ -38,7 +38,7 @@ public final class VistaVendedor extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(imgVendedor);
-        this.aggImg(this.imgVendedor, "src/tallerpoo/conexion/base/de/datos/cajero.png");    
+        this.aggImg(this.imgVendedor, "src/tallerpoo/conexion/base/de/datos/img/cajero.png");    
         DameCliente();
         DameProducto();
         tipoProd = Combo_Producto.getSelectedItem().toString();

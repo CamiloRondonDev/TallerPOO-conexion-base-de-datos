@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author hp
@@ -30,7 +31,7 @@ public class VistaLogin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(imgLogin);
-        this.aggImg(this.imgLogin, "src/tallerpoo/conexion/base/de/datos/imgLogin.png");
+        this.aggImg(this.imgLogin, "src/tallerpoo/conexion/base/de/datos/img/imgLogin.png");
         
     }
 
@@ -61,14 +62,14 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
 
-        cedula_text.setText("100733111");
+        cedula_text.setText("1007331225");
         cedula_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedula_textActionPerformed(evt);
             }
         });
 
-        nombre_text.setText("Dayana");
+        nombre_text.setText("Camilo");
         nombre_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombre_textActionPerformed(evt);
@@ -160,11 +161,15 @@ public class VistaLogin extends javax.swing.JFrame {
        dispose();//para cerrarla al ir a otra 
       
        if(user.logAux == 5){
+       //CrearVendedor vistaAdmin = new CrearVendedor(user);
+      // vistaAdmin.setVisible(true);
        VistaAdmin vistaAdmin = new VistaAdmin(user);
-       vistaAdmin.setVisible(true);
+        vistaAdmin.setVisible(true);
+        dispose();//para cerrarla al ir a otra 
        }else if(user.logAux == 6){  
        VistaVendedor vistaVendedor  = new VistaVendedor(user);
        vistaVendedor.setVisible(true);
+       dispose();//para cerrarla al ir a otra 
            //JOptionPane.showMessageDialog(null, "estamos trabajando en el vendedor");
        }else{
         JOptionPane.showMessageDialog(null, "usuario no resgistrasdo");

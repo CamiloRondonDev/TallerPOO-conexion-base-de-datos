@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//package tallerpoo.conexion.base.de.datos.Vista;
 package tallerpoo.conexion.base.de.datos;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 
 /**
@@ -12,15 +17,21 @@ package tallerpoo.conexion.base.de.datos;
  * @author hp
  */
 public class VistaAdmin extends javax.swing.JFrame {
-     Usuarios user = new Usuarios();
 
     /**
      * Creates new form VistaAdmin
      */
+      private ImageIcon imagen;
+      private Icon icono;
+      private Usuarios user;
+    
     public VistaAdmin(Usuarios user) {
+        this.user = user;
         initComponents();
         this.setLocationRelativeTo(null);
-        setNameAdmin.setText(user.nombre);
+        this.setLocationRelativeTo(imgAdmin);
+        this.aggImg(this.imgAdmin, "src/tallerpoo/conexion/base/de/datos/img/Admin.png");
+        mostrarNombre_text.setText(user.nombre);
     }
 
     private VistaAdmin() {
@@ -38,168 +49,89 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnCrearVendedor = new javax.swing.JButton();
-        nomVend_text = new javax.swing.JTextField();
-        dniVende_text = new javax.swing.JTextField();
-        mailVend_text = new javax.swing.JTextField();
-        telVend_text = new javax.swing.JTextField();
-        celVend_text = new javax.swing.JTextField();
-        setNameAdmin = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        imgAdmin = new javax.swing.JLabel();
+        mostrarNombre_text = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("ADMIN");
 
-        btnCrearVendedor.setText("CREAR VENDEDOR");
+        btnCrearVendedor.setText("Crear Vendedor");
         btnCrearVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearVendedorActionPerformed(evt);
             }
         });
 
-        nomVend_text.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Crear Clente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomVend_textActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        dniVende_text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dniVende_textActionPerformed(evt);
-            }
-        });
+        jButton3.setText("Elim. Vendedor");
 
-        mailVend_text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mailVend_textActionPerformed(evt);
-            }
-        });
-
-        telVend_text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telVend_textActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Nombre");
-
-        jLabel4.setText("DNI");
-
-        jLabel5.setText("Teléfono");
-
-        jLabel6.setText("Celular");
-
-        jLabel7.setText("Mail");
+        jButton4.setText("Elim. Cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(setNameAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(mostrarNombre_text, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(dniVende_text, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(nomVend_text, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
-                                .addGap(82, 82, 82)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(telVend_text)
-                                        .addComponent(celVend_text, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)))
-                            .addComponent(mailVend_text, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(btnCrearVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                                .addComponent(btnCrearVendedor)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton3))
+                            .addComponent(imgAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(setNameAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(mostrarNombre_text))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nomVend_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(telVend_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dniVende_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(celVend_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addGap(1, 1, 1)
-                .addComponent(mailVend_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnCrearVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(imgAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCrearVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void btnCrearVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearVendedorActionPerformed
         // TODO add your handling code here:
-        BaseDatos bd = new BaseDatos();
-        
-        user.nombre = nomVend_text.getText();
-        user.dni = dniVende_text.getText();
-        user.mail = mailVend_text.getText();
-        user.tel = telVend_text.getText();
-        user.cel = celVend_text.getText();
-        user.id_Rol = 6;
-        
-        bd.insertarUsuarios(user);
-        
+       CrearVendedor vistaAdmin = new CrearVendedor(user);
+       vistaAdmin.setVisible(true);
     }//GEN-LAST:event_btnCrearVendedorActionPerformed
 
-    private void nomVend_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomVend_textActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomVend_textActionPerformed
-
-    private void telVend_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telVend_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_telVend_textActionPerformed
-
-    private void mailVend_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailVend_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mailVend_textActionPerformed
-
-    private void dniVende_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniVende_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dniVende_textActionPerformed
-
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,25 +163,34 @@ public class VistaAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              new VistaAdmin().setVisible(true);
+                new VistaAdmin().setVisible(true);
  
             }
         });
     }
+    
+    
+      private void aggImg(JLabel labelEjm, String ruta){
+        
+        this.imagen = new ImageIcon(ruta);
+        
+        this.icono = new ImageIcon(
+                this.imagen.getImage().getScaledInstance(
+                        labelEjm.getWidth() ,
+                        labelEjm.getHeight(), 
+                        Image.SCALE_DEFAULT)
+        );
+        labelEjm.setIcon(icono);
+        this.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearVendedor;
-    private javax.swing.JTextField celVend_text;
-    private javax.swing.JTextField dniVende_text;
+    private javax.swing.JLabel imgAdmin;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField mailVend_text;
-    private javax.swing.JTextField nomVend_text;
-    private javax.swing.JLabel setNameAdmin;
-    private javax.swing.JTextField telVend_text;
+    private javax.swing.JLabel mostrarNombre_text;
     // End of variables declaration//GEN-END:variables
 }

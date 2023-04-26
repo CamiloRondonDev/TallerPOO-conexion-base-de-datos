@@ -197,9 +197,9 @@ class BaseDatos {
 
             String update = "update usuarios set estado = 0 where dni = " +usuarios.dni;
             System.out.println("resultado--> " + update);
-          //  int valor = inserData.executeUpdate(insert);
-            //System.out.println("retorno > " + valor);
-           // JOptionPane.showMessageDialog(null, "Cliente creado exitosamente");
+            int valor = inserData.executeUpdate(update);
+            System.out.println("retorno > " + valor);
+            JOptionPane.showMessageDialog(null, "Usuario bloqueado exitosamente");
 
         } catch (Exception e) {
             System.out.println("error de conexion" + e);

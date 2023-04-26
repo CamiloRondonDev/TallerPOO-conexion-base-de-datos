@@ -17,6 +17,7 @@ public class CrearCliente extends javax.swing.JFrame {
      */
     public CrearCliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -191,7 +192,8 @@ public class CrearCliente extends javax.swing.JFrame {
         cliente.cel = celCliente_text.getText();
         cliente.direccion = direccCliente_text.getText();
 
-        //bd.insertarUsuarios(cliente);
+        bd.insertarClientes(cliente);
+        dispose();//para cerrarla al ir a otra 
 
     }//GEN-LAST:event_btnCrearClienteActionPerformed
 

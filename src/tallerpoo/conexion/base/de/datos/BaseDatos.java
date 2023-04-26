@@ -5,7 +5,6 @@
  */
 package tallerpoo.conexion.base.de.datos;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -71,15 +70,13 @@ class BaseDatos {
                 prod.precioCompra = rs.getLong("precioCompra");
                 prod.precioVenta = rs.getLong("precioVenta");
                 prod.stock = rs.getInt("stock");
-                prod.estado = rs.getInt("estado");  
-                
-                if(prod.nombre.equals(producto)){
-                return prod;
+                prod.estado = rs.getInt("estado");
+
+                if (prod.nombre.equals(producto)) {
+                    return prod;
                 }
-                
+
             }
-            
-        
 
         } catch (Exception e) {
 
@@ -90,50 +87,43 @@ class BaseDatos {
         return prod;
 
     }
-    
-    
-    public int RegistrarVenta(Cliente cliente, Productos product , int cantidad , float total){
-    
-        
-        Productos prod ;
-         int valor = 0;
+
+    public int RegistrarVenta(Cliente cliente, Productos product, int cantidad, float total) {
+
+        Productos prod;
+        int valor = 0;
         //Cliente cliente;
         Venta venta = new Venta();
 
         try {
             con = null;
 
-
-             Class.forName(DRIVE);
+            Class.forName(DRIVE);
             con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
-            Statement  inserData = con.createStatement();
+            Statement inserData = con.createStatement();
             System.out.println("correcto conexion insert");
 
-            
             //String insert = "insert into datos (nombre, cedula, correo ) values" + "('" + nombre + "'," + "'" + dni + "',"+ "'" + correo + "')";
             //String insert = "insert into venta (idProducto,idCliente,cantidad,valorUnitario,valorTotal,fecha) values(1 ,2 ,3,2000,6000,CURDATE())";
-            String insert = "insert into venta (idProducto,idCliente,cantidad,valorUnitario,valorTotal,fecha) values("+product.id+","+cliente.id+" ,"+cantidad+","+product.precioVenta+","+total+",CURDATE())";
-            System.out.println("-->resultado<--"+insert);
-            valor =  inserData.executeUpdate(insert);
+            String insert = "insert into venta (idProducto,idCliente,cantidad,valorUnitario,valorTotal,fecha) values(" + product.id + "," + cliente.id + " ," + cantidad + "," + product.precioVenta + "," + total + ",CURDATE())";
+            System.out.println("-->resultado<--" + insert);
+            valor = inserData.executeUpdate(insert);
             System.out.println("retorno > " + valor);
             return valor;
-            
 
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "error de conexion" + e);
 
         }
-        
-        return valor;
-    
-    }
-    
-    
-    
-     public Cliente ConsultarClientes(String clien ) {
 
-         Cliente cliente = new Cliente();
+        return valor;
+
+    }
+
+    public Cliente ConsultarClientes(String clien) {
+
+        Cliente cliente = new Cliente();
 
         try {
             con = null;
@@ -155,15 +145,15 @@ class BaseDatos {
                 cliente.dni = rs.getString("dni");
                 cliente.tel = rs.getString("tel");
                 cliente.cel = rs.getString("cel");
-                cliente.mail = rs.getString("mail"); 
+                cliente.mail = rs.getString("mail");
                 cliente.direccion = rs.getString("direccion");
-                
-                if(cliente.nombre.equals(clien)){
-                return cliente;
+
+                if (cliente.nombre.equals(clien)) {
+                    return cliente;
                 }
-                
+
             }
-            
+
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "error de conexion" + e);
@@ -171,6 +161,28 @@ class BaseDatos {
         }
 
         return cliente;
+
+    }
+
+    public void insertarClientes(Cliente cliente) {
+
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            String insert = "insert into cliente (nombre, dni, tel , cel , mail, direccion)"
+                    + "values ('" + cliente.nombre + "', '" + cliente.dni + "', '" + cliente.tel + "', '" + cliente.cel + "', '" + cliente.mail + "', '" + cliente.direccion + "')";
+            System.out.println("resultado--> " + insert);
+            int valor = inserData.executeUpdate(insert);
+            System.out.println("retorno > " + valor);
+            JOptionPane.showMessageDialog(null, "Cliente creado exitosamente");
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
 
     }
 

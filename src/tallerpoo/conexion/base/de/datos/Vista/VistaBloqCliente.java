@@ -9,12 +9,12 @@ package tallerpoo.conexion.base.de.datos;
  *
  * @author hp
  */
-public class VistaBloqUsuario extends javax.swing.JFrame {
+public class VistaBloqCliente extends javax.swing.JFrame {
 
     /**
-     * Creates new form VistaBloqUsuario
+     * Creates new form VistaBloqCliente
      */
-    public VistaBloqUsuario() {
+    public VistaBloqCliente() {
         initComponents();
          this.setLocationRelativeTo(null);
     }
@@ -28,22 +28,21 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBloquearCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        numCuduBloquear_text = new javax.swing.JTextField();
-        btnBloquearUsuario = new javax.swing.JButton();
+        numCuduBloquearCliente_text = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Borrar usuario");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Digíta cédula de usuario a bloquear");
-
-        btnBloquearUsuario.setText("BLOQUEAR");
-        btnBloquearUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btnBloquearCliente.setText("BLOQUEAR");
+        btnBloquearCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBloquearUsuarioActionPerformed(evt);
+                btnBloquearClienteActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Digíta cédula de Cliente a bloquear");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,10 +55,10 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
-                        .addComponent(numCuduBloquear_text, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(numCuduBloquearCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
-                        .addComponent(btnBloquearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBloquearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -68,23 +67,23 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
                 .addGap(127, 127, 127)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(numCuduBloquear_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numCuduBloquearCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(btnBloquearUsuario)
+                .addComponent(btnBloquearCliente)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBloquearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBloquearUsuarioActionPerformed
+    private void btnBloquearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBloquearClienteActionPerformed
         // TODO add your handling code here:
-        Usuarios user = new Usuarios();
+        Cliente cliente = new Cliente();
         BaseDatos bd = new BaseDatos();
-        user.dni = numCuduBloquear_text.getText();
-        bd.DesactivarUsuario(user);
-        
-    }//GEN-LAST:event_btnBloquearUsuarioActionPerformed
+        cliente.dni = numCuduBloquearCliente_text.getText();
+        bd.DesactivarClientes(cliente);
+
+    }//GEN-LAST:event_btnBloquearClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,27 +102,27 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaBloqUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaBloqCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaBloqUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaBloqCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaBloqUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaBloqCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaBloqUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaBloqCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaBloqUsuario().setVisible(true);
+                new VistaBloqCliente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBloquearUsuario;
+    private javax.swing.JButton btnBloquearCliente;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField numCuduBloquear_text;
+    private javax.swing.JTextField numCuduBloquearCliente_text;
     // End of variables declaration//GEN-END:variables
 }

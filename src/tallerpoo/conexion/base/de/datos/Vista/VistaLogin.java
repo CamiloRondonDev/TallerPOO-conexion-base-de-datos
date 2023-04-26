@@ -160,20 +160,20 @@ public class VistaLogin extends javax.swing.JFrame {
        user = valLogin.validarUsuario(tipoUsuer,cedula,nombre);
        dispose();//para cerrarla al ir a otra 
       
-       if(user.logAux == 5){
-       //CrearVendedor vistaAdmin = new CrearVendedor(user);
-      // vistaAdmin.setVisible(true);
-       VistaAdmin vistaAdmin = new VistaAdmin(user);
-        vistaAdmin.setVisible(true);
-        dispose();//para cerrarla al ir a otra 
-       }else if(user.logAux == 6){  
-       VistaVendedor vistaVendedor  = new VistaVendedor(user);
-       vistaVendedor.setVisible(true);
-       dispose();//para cerrarla al ir a otra 
-           //JOptionPane.showMessageDialog(null, "estamos trabajando en el vendedor");
-       }else{
-        JOptionPane.showMessageDialog(null, "usuario no resgistrasdo");
-       }
+        if (user.logAux == 5 && user.estado == 1) {
+            //CrearVendedor vistaAdmin = new CrearVendedor(user);
+            // vistaAdmin.setVisible(true);
+            VistaAdmin vistaAdmin = new VistaAdmin(user);
+            vistaAdmin.setVisible(true);
+            dispose();//para cerrarla al ir a otra 
+        } else if (user.logAux == 6 && user.estado == 1) {
+            VistaVendedor vistaVendedor = new VistaVendedor(user);
+            vistaVendedor.setVisible(true);
+            dispose();//para cerrarla al ir a otra 
+            //JOptionPane.showMessageDialog(null, "estamos trabajando en el vendedor");
+        } else {
+            JOptionPane.showMessageDialog(null, "usuario no resgistrasdo o bloqueado");
+        }
         
        
        

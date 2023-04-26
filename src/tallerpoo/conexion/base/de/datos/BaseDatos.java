@@ -186,7 +186,7 @@ class BaseDatos {
 
     }
     
-       public void DesactivarCliente(Usuarios usuarios) {
+       public void DesactivarUsuario(Usuarios usuarios) {
 
         try {
             con = null;
@@ -207,5 +207,26 @@ class BaseDatos {
 
     }
 
+       
+    public void DesactivarClientes(Cliente clientes) {
+
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            String update = "update cliente set estado = 0 where dni = " + clientes.dni;
+            System.out.println("resultado--> " + update);
+            int valor = inserData.executeUpdate(update);
+            System.out.println("retorno > " + valor);
+            JOptionPane.showMessageDialog(null, "Usuario bloqueado exitosamente");
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
 
 }

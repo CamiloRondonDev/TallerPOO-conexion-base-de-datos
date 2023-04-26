@@ -87,7 +87,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="cedula_text">
       <Properties>
-        <Property name="text" type="java.lang.String" value="1007331225"/>
+        <Property name="text" type="java.lang.String" value="1616"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cedula_textActionPerformed"/>
@@ -95,7 +95,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="nombre_text">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Camilo"/>
+        <Property name="text" type="java.lang.String" value="admin"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombre_textActionPerformed"/>
@@ -114,9 +114,10 @@
     <Component class="javax.swing.JComboBox" name="TipoUsuario">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
+          <StringArray count="3">
             <StringItem index="0" value="Administrador"/>
             <StringItem index="1" value="Vendedor"/>
+            <StringItem index="2" value="Super-Usuario"/>
           </StringArray>
         </Property>
       </Properties>

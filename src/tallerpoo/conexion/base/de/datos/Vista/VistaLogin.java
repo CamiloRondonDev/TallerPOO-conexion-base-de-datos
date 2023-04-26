@@ -14,6 +14,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import tallerpoo.conexion.base.de.datos.Vista.VistaSuperUser;
 
 
 /**
@@ -62,14 +63,14 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
 
-        cedula_text.setText("1007331225");
+        cedula_text.setText("1616");
         cedula_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedula_textActionPerformed(evt);
             }
         });
 
-        nombre_text.setText("Camilo");
+        nombre_text.setText("admin");
         nombre_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombre_textActionPerformed(evt);
@@ -80,7 +81,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
         jLabel3.setText("CEDULA");
 
-        TipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Vendedor" }));
+        TipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Vendedor", "Super-Usuario" }));
         TipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TipoUsuarioActionPerformed(evt);
@@ -171,7 +172,13 @@ public class VistaLogin extends javax.swing.JFrame {
             vistaVendedor.setVisible(true);
             dispose();//para cerrarla al ir a otra 
             //JOptionPane.showMessageDialog(null, "estamos trabajando en el vendedor");
-        } else {
+        } else if(user.logAux == 7 && user.estado == 1) {
+            
+            //JOptionPane.showMessageDialog(null, "ADMIN ERES EL MEJOR");
+            VistaSuperUser vistaSuper = new VistaSuperUser();
+            vistaSuper.setVisible(true);
+        }else{
+            
             JOptionPane.showMessageDialog(null, "usuario no resgistrasdo o bloqueado");
         }
         

@@ -50,7 +50,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnCrearVendedor = new javax.swing.JButton();
         btnCrearCliente = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnDesactivarVendedor = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         imgAdmin = new javax.swing.JLabel();
         mostrarNombre_text = new javax.swing.JLabel();
@@ -74,7 +74,12 @@ public class VistaAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Des. Vendedor");
+        btnDesactivarVendedor.setText("Des. Vendedor");
+        btnDesactivarVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesactivarVendedorActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Des. Cliente");
 
@@ -96,7 +101,7 @@ public class VistaAdmin extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3))
+                                .addComponent(btnDesactivarVendedor))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(imgAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -117,7 +122,7 @@ public class VistaAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrearVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDesactivarVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41))
         );
@@ -133,9 +138,15 @@ public class VistaAdmin extends javax.swing.JFrame {
 
     private void btnCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearClienteActionPerformed
         // TODO add your handling code here:
-        CrearCliente cCliente = new CrearCliente();
+        VistaCrearCliente cCliente = new VistaCrearCliente();
         cCliente.setVisible(true);
     }//GEN-LAST:event_btnCrearClienteActionPerformed
+
+    private void btnDesactivarVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarVendedorActionPerformed
+        // TODO add your handling code here:
+        VistaBloqUsuario vistaBloUsuario = new VistaBloqUsuario();
+        vistaBloUsuario.setVisible(true);
+    }//GEN-LAST:event_btnDesactivarVendedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,8 +202,8 @@ public class VistaAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearCliente;
     private javax.swing.JButton btnCrearVendedor;
+    private javax.swing.JButton btnDesactivarVendedor;
     private javax.swing.JLabel imgAdmin;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel mostrarNombre_text;

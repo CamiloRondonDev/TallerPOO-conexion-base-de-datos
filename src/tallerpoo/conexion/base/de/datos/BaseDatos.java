@@ -185,5 +185,27 @@ class BaseDatos {
         }
 
     }
+    
+       public void DesactivarCliente(Usuarios usuarios) {
+
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            String update = "update usuarios set estado = 0 where dni = " +usuarios.dni;
+            System.out.println("resultado--> " + update);
+          //  int valor = inserData.executeUpdate(insert);
+            //System.out.println("retorno > " + valor);
+           // JOptionPane.showMessageDialog(null, "Cliente creado exitosamente");
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
+
 
 }

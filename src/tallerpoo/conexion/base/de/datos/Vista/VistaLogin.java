@@ -14,7 +14,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import tallerpoo.conexion.base.de.datos.Vista.VistaSuperUser;
+import tallerpoo.conexion.base.de.datos.VistaSuperUser;
 
 
 /**

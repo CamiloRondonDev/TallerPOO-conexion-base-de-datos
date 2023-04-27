@@ -12,18 +12,19 @@ package tallerpoo.conexion.base.de.datos;
  * @author hp
  */
 public class CrearVendedor extends javax.swing.JFrame {
-     Usuarios user = new Usuarios();
+     Usuarios user;
 
     /**
      * Creates new form VistaAdmin
      */
     public CrearVendedor(Usuarios user) {
+        this.user = user;
         initComponents();
         this.setLocationRelativeTo(null);
         setNameAdmin.setText(user.nombre);
     }
 
-    private CrearVendedor() {
+    CrearVendedor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -178,8 +179,7 @@ public class CrearVendedor extends javax.swing.JFrame {
         user.mail = mailVend_text.getText();
         user.tel = telVend_text.getText();
         user.cel = celVend_text.getText();
-        user.id_Rol = 6;
-        
+
         bd.insertarUsuarios(user);
         
     }//GEN-LAST:event_btnCrearVendedorActionPerformed

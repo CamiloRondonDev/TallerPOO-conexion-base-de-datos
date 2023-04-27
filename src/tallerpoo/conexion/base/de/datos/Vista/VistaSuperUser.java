@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tallerpoo.conexion.base.de.datos.Vista;
+package tallerpoo.conexion.base.de.datos;
 
 /**
  *
@@ -12,6 +12,7 @@ package tallerpoo.conexion.base.de.datos.Vista;
 public class VistaSuperUser extends javax.swing.JFrame {
 
     String tipoUsuer;
+    Usuarios user;
     /**
      * Creates new form VistaSuperUser
      */
@@ -78,6 +79,14 @@ public class VistaSuperUser extends javax.swing.JFrame {
         switch (tipoUsuer) {
             case "Agregar Admin":
                 System.out.println("AGG ADMIN");
+                Usuarios user = new Usuarios();
+                BaseDatos bd = new BaseDatos();
+                user.id_Rol = 5;
+                CrearVendedor crearV = new CrearVendedor(user);
+                crearV.setVisible(true);
+                
+                
+                
                 break;
 
             case "Agregar Vendedor":

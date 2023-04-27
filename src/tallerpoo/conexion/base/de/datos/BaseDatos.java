@@ -38,7 +38,12 @@ class BaseDatos {
             System.out.println("resultado--> " + insert);
             int valor = inserData.executeUpdate(insert);
             System.out.println("retorno > " + valor);
-            JOptionPane.showMessageDialog(null, "Vendedor creado exitosamente");
+            if(user.id_Rol == 5){
+             JOptionPane.showMessageDialog(null, "Admin creado exitosamente");
+            }else{
+             JOptionPane.showMessageDialog(null, "Vendedor creado exitosamente");
+            }
+            
 
         } catch (Exception e) {
             System.out.println("error de conexion" + e);

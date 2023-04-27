@@ -13,12 +13,16 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
     String tipoUsuer;
     Usuarios user;
+    
     /**
      * Creates new form VistaSuperUser
      */
     public VistaSuperUser() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Usuarios user = new Usuarios();
+        BaseDatos bd = new BaseDatos();
+        
     }
 
     /**
@@ -35,7 +39,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        accion_realizar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Agregar Admin", "Agregar Vendedor", "Agregar Cliente", "Agregar Proveedor", "Bloq. Admin", "Bloq. Vendedor", "Bloq. Proveedor", "Registro ventas" }));
+        accion_realizar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Agregar Admin", "Agregar Vendedor", "Agregar Cliente", "Agregar Proveedor", "Bloq. Admin", "Bloq. Vendedor", "Bloq. Proveedor", "Bloq. Cliente", "Registro ventas" }));
 
         btnAceptar.setText("ACEPTAR");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,22 +83,24 @@ public class VistaSuperUser extends javax.swing.JFrame {
         switch (tipoUsuer) {
             case "Agregar Admin":
                 System.out.println("AGG ADMIN");
-                Usuarios user = new Usuarios();
-                BaseDatos bd = new BaseDatos();
                 user.id_Rol = 5;
-                CrearVendedor crearV = new CrearVendedor(user);
-                crearV.setVisible(true);
-                
-                
-                
+                CrearVendedor crearV1 = new CrearVendedor(user);
+                crearV1.setVisible(true);
                 break;
 
             case "Agregar Vendedor":
                 System.out.println("AGG VENDEDOR");
+                Usuarios user = new Usuarios();
+                BaseDatos bd = new BaseDatos();
+                user.id_Rol = 6;
+                CrearVendedor crearV2 = new CrearVendedor(user);
+                crearV2.setVisible(true);
                 break;
 
             case "Agregar Cliente":
                 System.out.println("AGG CLIENTE");
+                VistaCrearCliente vistaCreaClie = new VistaCrearCliente();
+                vistaCreaClie.setVisible(true);
                 break;
 
             case "Agregar Proveedor":
@@ -103,20 +109,32 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
             case "Bloq. Admin":
                 System.out.println("BLOQ ADMIN");
+                VistaBloqUsuario vistaBloAdmin = new VistaBloqUsuario();
+                vistaBloAdmin.setVisible(true);
                 break;
 
             case "Bloq. Vendedor":
                 System.out.println("BLOQ VENDEDOR");
+                VistaBloqUsuario vistabloqVend = new VistaBloqUsuario();
+                vistabloqVend.setVisible(true);
                 break;
 
             case "Bloq. Proveedor":
                 System.out.println("BLOQ PROVEE");
+                VistaBloqProveedor vistaBloProvee = new VistaBloqProveedor();
+                vistaBloProvee.setVisible(true);
                 break;
 
+              case "Bloq. Cliente":
+                System.out.println("BLOQ CLIENTE");
+                VistaBloqCliente bloqCliente = new VistaBloqCliente();
+                bloqCliente.setVisible(true);
+                break;
+                
             case "Registro ventas":
                 System.out.println("REG VENTAS");
                 break;
-
+                
             default:
                 System.out.println("selecciona alguna");
                 break;

@@ -233,5 +233,29 @@ class BaseDatos {
         }
 
     }
+    
+        public void DesactivarProveedor(Proveedores provee) {
+
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            String update = "update proveedor set estado = 0 where nit = " +provee.nit;
+            System.out.println("resultado--> " + update);
+            int valor = inserData.executeUpdate(update);
+            System.out.println("retorno > " + valor);
+            if(valor ==1 ){
+            JOptionPane.showMessageDialog(null, "Porveedor bloqueado exitosamente");
+            }
+            
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
 
 }

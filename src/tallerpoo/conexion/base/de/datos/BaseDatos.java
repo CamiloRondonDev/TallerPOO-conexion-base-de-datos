@@ -257,5 +257,32 @@ class BaseDatos {
         }
 
     }
+        
+    public void insertarProveedor(Proveedores provee) {
+
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            String insert = "insert into proveedor (nombre, nit, tel , cel , mail, direccion)"
+                    + "values ('" + provee.nombre + "', '" + provee.nit + "', '" + provee.tel + "', '" + provee.cel + "', '" + provee.mail + "', '" + provee.direccion + "')";
+            System.out.println("resultado--> " + insert);
+            int valor = inserData.executeUpdate(insert);
+            System.out.println("retorno > " + valor);
+            if(valor == 1){
+            JOptionPane.showMessageDialog(null, "Proveefor creado exitosamente");
+            }else{
+             JOptionPane.showMessageDialog(null, "Error al crear Proveedor");
+            }
+            
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
 
 }

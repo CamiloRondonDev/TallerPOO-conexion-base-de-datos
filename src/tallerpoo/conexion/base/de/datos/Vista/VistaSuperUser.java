@@ -59,7 +59,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
                         .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(accion_realizar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(accion_realizar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -105,6 +105,8 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
             case "Agregar Proveedor":
                 System.out.println("AGG PROVEE");
+                VistaCrearProveedor vistaCreaProvee = new VistaCrearProveedor();
+                vistaCreaProvee.setVisible(true);
                 break;
 
             case "Bloq. Admin":

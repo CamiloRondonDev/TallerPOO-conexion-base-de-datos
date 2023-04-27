@@ -32,6 +32,7 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         numCuduBloquear_text = new javax.swing.JTextField();
         btnBloquearUsuario = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Borrar usuario");
@@ -43,6 +44,13 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
         btnBloquearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBloquearUsuarioActionPerformed(evt);
+            }
+        });
+
+        btnAtras.setText("<-- atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
             }
         });
 
@@ -63,11 +71,16 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
                                 .addGap(16, 16, 16)
                                 .addComponent(btnBloquearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(62, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
+                .addContainerGap()
+                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(numCuduBloquear_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -93,6 +106,11 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnBloquearUsuarioActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+        dispose();//para cerrarla al ir a otra 
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,6 +148,7 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnBloquearUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField numCuduBloquear_text;

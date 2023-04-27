@@ -32,7 +32,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(imgSuperAdmin);
         this.aggImg(this.imgSuperAdmin, "src/tallerpoo/conexion/base/de/datos/img/programador.png");
-        
+
       
         
     }
@@ -46,9 +46,32 @@ public class VistaSuperUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jPopupMenu4 = new javax.swing.JPopupMenu();
         accion_realizar = new javax.swing.JComboBox<>();
         btnAceptar = new javax.swing.JButton();
         imgSuperAdmin = new javax.swing.JLabel();
+
+        jMenu1.setText("jMenu1");
+
+        jMenu2.setText("jMenu2");
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +84,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
             }
         });
 
-        imgSuperAdmin.setText("jLabel1");
+        imgSuperAdmin.setText("img");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,13 +141,13 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
             case "Agregar Cliente":
                 System.out.println("AGG CLIENTE");
-                VistaCrearCliente vistaCreaClie = new VistaCrearCliente();
+                VistaCrearCliente vistaCreaClie = new VistaCrearCliente("Super-Admin");
                 vistaCreaClie.setVisible(true);
                 break;
 
             case "Agregar Proveedor":
                 System.out.println("AGG PROVEE");
-                VistaCrearProveedor vistaCreaProvee = new VistaCrearProveedor();
+                VistaCrearProveedor vistaCreaProvee = new VistaCrearProveedor("Super-Admin");
                 vistaCreaProvee.setVisible(true);
                 break;
 
@@ -208,10 +231,20 @@ public class VistaSuperUser extends javax.swing.JFrame {
             new VistaSuperUser().setVisible(true);
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> accion_realizar;
     private javax.swing.JButton btnAceptar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel imgSuperAdmin;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPopupMenu jPopupMenu4;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

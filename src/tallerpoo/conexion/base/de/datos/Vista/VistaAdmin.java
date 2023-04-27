@@ -144,7 +144,7 @@ public class VistaAdmin extends javax.swing.JFrame {
 
     private void btnCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearClienteActionPerformed
         // TODO add your handling code here:
-        VistaCrearCliente cCliente = new VistaCrearCliente();
+        VistaCrearCliente cCliente = new VistaCrearCliente("Admin");
         cCliente.setVisible(true);
     }//GEN-LAST:event_btnCrearClienteActionPerformed
 

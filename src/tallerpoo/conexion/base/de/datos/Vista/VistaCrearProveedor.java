@@ -5,6 +5,8 @@
  */
 package tallerpoo.conexion.base.de.datos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hp
@@ -14,9 +16,14 @@ public class VistaCrearProveedor extends javax.swing.JFrame {
     /**
      * Creates new form VistaCrearProveedor
      */
-    public VistaCrearProveedor() {
+    public VistaCrearProveedor(String solicitud) {
         initComponents();
         this.setLocationRelativeTo(null);
+        jLabel1.setText(solicitud);
+    }
+
+    private VistaCrearProveedor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -56,7 +63,6 @@ public class VistaCrearProveedor extends javax.swing.JFrame {
         jLabel7.setText("Mail");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("ADMIN");
 
         btnCrearProveedor.setText("CREAR PROVEEDOR");
         btnCrearProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +198,14 @@ public class VistaCrearProveedor extends javax.swing.JFrame {
         provee.cel = celProvee_text.getText();
         provee.direccion = direclProvee_text.getText();
         
-        bd.insertarProveedor(provee);
+        if (provee.nombre.equals("") || provee.nit.equals("") || provee.mail.equals("") || provee.cel.equals("") || provee.tel.equals("") || provee.direccion.equals("")) {
+            JOptionPane.showMessageDialog(null, "llena todos los espacios");
+        } else {
+            bd.insertarProveedor(provee);
+            dispose();//para cerrarla al ir a otra 
+        }
+        
+        
 
     }//GEN-LAST:event_btnCrearProveedorActionPerformed
 

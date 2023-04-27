@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tallerpoo.conexion.base.de.datos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +37,12 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Digíta cédula de Proveedir a bloquear");
+
+        numCuduBloquearProvee_text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numCuduBloquearProvee_textActionPerformed(evt);
+            }
+        });
 
         btnBloquearProvee.setText("BLOQUEAR");
         btnBloquearProvee.addActionListener(new java.awt.event.ActionListener() {
@@ -82,9 +89,18 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
         Proveedores prov = new Proveedores();
         BaseDatos bd = new BaseDatos();
         prov.nit = numCuduBloquearProvee_text.getText();
-        bd.DesactivarProveedor(prov);
+        if(prov.nit.equals("")){
+          JOptionPane.showMessageDialog(null, "llena todos los espacios");
+        }else{
+          bd.DesactivarProveedor(prov);
+        }
+        
 
     }//GEN-LAST:event_btnBloquearProveeActionPerformed
+
+    private void numCuduBloquearProvee_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuduBloquearProvee_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numCuduBloquearProvee_textActionPerformed
 
     /**
      * @param args the command line arguments

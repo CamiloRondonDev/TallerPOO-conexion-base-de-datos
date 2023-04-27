@@ -27,8 +27,7 @@ public class CrearVendedor extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setNameAdmin.setText(user.nombre);
         jLabel1.setText(solicitud);
-        
-        
+
         btnCrearVendedor.setText("crear");
     }
 

@@ -12,14 +12,21 @@ import javax.swing.JOptionPane;
  * @author hp
  */
 public class VistaCrearCliente extends javax.swing.JFrame {
+     private String solicitud;
 
     Cliente cliente = new Cliente();
     /**
      * Creates new form CrearCliente
      */
-    public VistaCrearCliente() {
+    public VistaCrearCliente(String solicitud) {
+        this.solicitud = solicitud;
         initComponents();
         this.setLocationRelativeTo(null);
+         setNameAdmin.setText(solicitud);
+    }
+
+    private VistaCrearCliente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -58,7 +65,6 @@ public class VistaCrearCliente extends javax.swing.JFrame {
         jLabel7.setText("Dirección");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("ADMIN");
 
         btnCrearCliente.setText("CREAR CLIENTE");
         btnCrearCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +117,7 @@ public class VistaCrearCliente extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(setNameAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(setNameAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +199,7 @@ public class VistaCrearCliente extends javax.swing.JFrame {
         cliente.tel = telCliente_text.getText();
         cliente.cel = celCliente_text.getText();
         cliente.direccion = direccCliente_text.getText();
-        
+       
         if (cliente.nombre.equals("") || cliente.dni.equals("") || cliente.mail.equals("") || cliente.cel.equals("") || cliente.tel.equals("") || cliente.direccion.equals("")) {
             JOptionPane.showMessageDialog(null, "llena todos los espacios");
         } else {

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tallerpoo.conexion.base.de.datos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,6 +45,12 @@ public class VistaBloqCliente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Digíta cédula de Cliente a bloquear");
 
+        numCuduBloquearCliente_text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numCuduBloquearCliente_textActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,9 +88,18 @@ public class VistaBloqCliente extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         BaseDatos bd = new BaseDatos();
         cliente.dni = numCuduBloquearCliente_text.getText();
-        bd.DesactivarClientes(cliente);
+        if (cliente.dni.equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingresa DNI");
+        } else {
+            bd.DesactivarClientes(cliente);
+        }
+        
 
     }//GEN-LAST:event_btnBloquearClienteActionPerformed
+
+    private void numCuduBloquearCliente_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuduBloquearCliente_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numCuduBloquearCliente_textActionPerformed
 
     /**
      * @param args the command line arguments

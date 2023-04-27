@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tallerpoo.conexion.base.de.datos;
+import javax.swing.JOptionPane;
 
 
 
@@ -13,15 +14,22 @@ package tallerpoo.conexion.base.de.datos;
  */
 public class CrearVendedor extends javax.swing.JFrame {
      Usuarios user;
+     private String solicitud;
+     
 
     /**
      * Creates new form VistaAdmin
      */
-    public CrearVendedor(Usuarios user) {
+    public CrearVendedor(Usuarios user , String solicitud) {
+        this.solicitud = solicitud;
         this.user = user;
         initComponents();
         this.setLocationRelativeTo(null);
         setNameAdmin.setText(user.nombre);
+        jLabel1.setText(solicitud);
+        
+        
+        btnCrearVendedor.setText("crear");
     }
 
     CrearVendedor() {
@@ -54,7 +62,6 @@ public class CrearVendedor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("ADMIN");
 
         btnCrearVendedor.setText("CREAR VENDEDOR");
         btnCrearVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -179,8 +186,14 @@ public class CrearVendedor extends javax.swing.JFrame {
         user.mail = mailVend_text.getText();
         user.tel = telVend_text.getText();
         user.cel = celVend_text.getText();
-
-        bd.insertarUsuarios(user);
+        
+        if(user.nombre.equals("")|| user.dni.equals("")||user.mail.equals("")||user.cel.equals("")||user.tel.equals("")){
+          JOptionPane.showMessageDialog(null, "llena todos los espacios");
+        }else{
+          bd.insertarUsuarios(user);
+          dispose();//para cerrarla al ir a otra 
+        }
+      
         
     }//GEN-LAST:event_btnCrearVendedorActionPerformed
 

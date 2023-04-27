@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tallerpoo.conexion.base.de.datos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,11 +56,12 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(numCuduBloquear_text, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(btnBloquearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(128, 128, 128)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numCuduBloquear_text, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(btnBloquearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -67,11 +69,11 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(29, 29, 29)
                 .addComponent(numCuduBloquear_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(btnBloquearUsuario)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -82,7 +84,13 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
         Usuarios user = new Usuarios();
         BaseDatos bd = new BaseDatos();
         user.dni = numCuduBloquear_text.getText();
-        bd.DesactivarUsuario(user);
+        if (user.dni.equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese DNI");
+        } else {
+            bd.DesactivarUsuario(user);
+            dispose();//para cerrarla al ir a otra 
+        }
+        
         
     }//GEN-LAST:event_btnBloquearUsuarioActionPerformed
 

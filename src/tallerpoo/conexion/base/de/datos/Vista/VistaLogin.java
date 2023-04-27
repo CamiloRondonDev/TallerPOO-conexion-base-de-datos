@@ -25,6 +25,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
    private ImageIcon imagen;
    private Icon icono;
+   private int aux = 0;
     /**
      * Creates new form VistaLogin
      */
@@ -63,14 +64,14 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
 
-        cedula_text.setText("100733111");
+        cedula_text.setText("1616");
         cedula_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedula_textActionPerformed(evt);
             }
         });
 
-        nombre_text.setText("Dayana");
+        nombre_text.setText("admin");
         nombre_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombre_textActionPerformed(evt);
@@ -155,30 +156,37 @@ public class VistaLogin extends javax.swing.JFrame {
        String cedula = cedula_text.getText().toString();
        String nombre = nombre_text.getText().toString();
        
+        if (cedula.equals("") || nombre.equals("")) {
+            JOptionPane.showMessageDialog(null, "llena todo los datos");
+            aux = 1;
+        }
+       
        ValidarLogin valLogin = new ValidarLogin();
        Usuarios user;
        
        user = valLogin.validarUsuario(tipoUsuer,cedula,nombre);
-       dispose();//para cerrarla al ir a otra 
+      
       
         if (user.logAux == 5 && user.estado == 1) {
             //CrearVendedor vistaAdmin = new CrearVendedor(user);
             // vistaAdmin.setVisible(true);
+             dispose();//para cerrarla al ir a otra 
             VistaAdmin vistaAdmin = new VistaAdmin(user);
             vistaAdmin.setVisible(true);
             dispose();//para cerrarla al ir a otra 
         } else if (user.logAux == 6 && user.estado == 1) {
+             dispose();//para cerrarla al ir a otra 
             VistaVendedor vistaVendedor = new VistaVendedor(user);
             vistaVendedor.setVisible(true);
             dispose();//para cerrarla al ir a otra 
             //JOptionPane.showMessageDialog(null, "estamos trabajando en el vendedor");
         } else if(user.logAux == 7 && user.estado == 1) {
-            
+             dispose();//para cerrarla al ir a otra 
             //JOptionPane.showMessageDialog(null, "ADMIN ERES EL MEJOR");
             VistaSuperUser vistaSuper = new VistaSuperUser();
             vistaSuper.setVisible(true);
         }else{
-            
+            if(aux == 0)
             JOptionPane.showMessageDialog(null, "usuario no resgistrasdo o bloqueado");
         }
         

@@ -5,6 +5,8 @@
  */
 package tallerpoo.conexion.base.de.datos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hp
@@ -191,10 +193,13 @@ public class VistaCrearCliente extends javax.swing.JFrame {
         cliente.tel = telCliente_text.getText();
         cliente.cel = celCliente_text.getText();
         cliente.direccion = direccCliente_text.getText();
-
-        bd.insertarClientes(cliente);
-        dispose();//para cerrarla al ir a otra 
-
+        
+        if (cliente.nombre.equals("") || cliente.dni.equals("") || cliente.mail.equals("") || cliente.cel.equals("") || cliente.tel.equals("") || cliente.direccion.equals("")) {
+            JOptionPane.showMessageDialog(null, "llena todos los espacios");
+        } else {
+            bd.insertarClientes(cliente);
+            dispose();//para cerrarla al ir a otra 
+        }
     }//GEN-LAST:event_btnCrearClienteActionPerformed
 
     private void nomCliente_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomCliente_textActionPerformed

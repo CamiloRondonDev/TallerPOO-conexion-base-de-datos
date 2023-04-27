@@ -17,9 +17,12 @@ import javax.swing.JLabel;
 public class VistaSuperUser extends javax.swing.JFrame {
 
     String tipoUsuer;
-    Usuarios user;
+    //Usuarios user;
     private ImageIcon imagen;
     private Icon icono;
+    
+      Usuarios user = new Usuarios();
+      BaseDatos bd = new BaseDatos();
     
     /**
      * Creates new form VistaSuperUser
@@ -30,8 +33,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
         this.setLocationRelativeTo(imgSuperAdmin);
         this.aggImg(this.imgSuperAdmin, "src/tallerpoo/conexion/base/de/datos/img/programador.png");
         
-        Usuarios user = new Usuarios();
-        BaseDatos bd = new BaseDatos();
+      
         
     }
 
@@ -103,16 +105,14 @@ public class VistaSuperUser extends javax.swing.JFrame {
             case "Agregar Admin":
                 System.out.println("AGG ADMIN");
                 user.id_Rol = 5;
-                CrearVendedor crearV1 = new CrearVendedor(user);
+                CrearVendedor crearV1 = new CrearVendedor(user , "Super-Admin");
                 crearV1.setVisible(true);
                 break;
 
             case "Agregar Vendedor":
                 System.out.println("AGG VENDEDOR");
-                Usuarios user = new Usuarios();
-                BaseDatos bd = new BaseDatos();
                 user.id_Rol = 6;
-                CrearVendedor crearV2 = new CrearVendedor(user);
+                CrearVendedor crearV2 = new CrearVendedor(user , "Super-Admin");
                 crearV2.setVisible(true);
                 break;
 

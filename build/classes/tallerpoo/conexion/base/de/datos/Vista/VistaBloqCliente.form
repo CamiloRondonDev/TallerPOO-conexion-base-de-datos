@@ -74,6 +74,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="numCuduBloquearCliente_text">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numCuduBloquearCliente_textActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

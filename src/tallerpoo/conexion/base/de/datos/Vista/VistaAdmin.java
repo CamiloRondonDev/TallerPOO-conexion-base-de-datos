@@ -138,7 +138,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     private void btnCrearVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearVendedorActionPerformed
         // TODO add your handling code here:
        user.id_Rol = 6;
-       CrearVendedor crearVendedor = new CrearVendedor(user);
+       CrearVendedor crearVendedor = new CrearVendedor(user , "Admin");
        crearVendedor.setVisible(true);
     }//GEN-LAST:event_btnCrearVendedorActionPerformed
 

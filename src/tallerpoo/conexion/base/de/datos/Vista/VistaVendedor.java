@@ -2,9 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */ 
+ */
 package tallerpoo.conexion.base.de.datos;
-
 
 import java.awt.Image;
 import java.sql.Connection;
@@ -24,14 +23,13 @@ import tallerpoo.conexion.base.de.datos.entidades.Productos;
  */
 public final class VistaVendedor extends javax.swing.JFrame {
 
-   private ImageIcon imagen;
-   private Icon icono;
+    private ImageIcon imagen;
+    private Icon icono;
     String tipoUsuer;
-   String tipoProd ;
-   int cantidad = 0 ;
-   float total;
-    
-    
+    String tipoProd;
+    int cantidad = 0;
+    float total;
+
     /**
      * Creates new form VistaVendedor
      */
@@ -39,14 +37,14 @@ public final class VistaVendedor extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(imgVendedor);
-        this.aggImg(this.imgVendedor, "src/tallerpoo/conexion/base/de/datos/img/cajero.png");    
+        this.aggImg(this.imgVendedor, "src/tallerpoo/conexion/base/de/datos/img/cajero.png");
         DameCliente();
         DameProducto();
         tipoProd = Combo_Producto.getSelectedItem().toString();
         mostrarNombreVend.setText(user.nombre);
-        valUnit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));
-        ValorTotal_text.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0,0,0)));        
-  
+        valUnit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ValorTotal_text.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
     }
 
     private VistaVendedor() {
@@ -222,82 +220,82 @@ public final class VistaVendedor extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-         BaseDatos bd = new BaseDatos();
-         Productos prod;
-         Cliente cliente;
-         int retro;
-         
-         prod = bd.ConsultarProductos(tipoProd);
-         cliente = bd.ConsultarClientes(tipoUsuer);
-         
-         System.out.println("--------------------------ini--------------------------------");
-         
-         System.out.println("total venta--> "+total);
-         System.out.println("prudocto --> "+ prod.nombre +" id producto --> "+ prod.id);
-         System.out.println("precio venta unitario --> "+ prod.precioVenta);
-         System.out.println("nombe cliente --> " + cliente.nombre);
-         System.out.println("id cliente --> " + cliente.id);
-         System.out.println("cantidad --> " + cantidad);
-         
-         System.out.println("--------------------------fin--------------------------------");
-   
-         retro =  bd.RegistrarVenta(cliente , prod , cantidad , total);
-         if(retro == 1){
-          JOptionPane.showMessageDialog(null, "Venta registrada exitosamente");
-         }else{
-          JOptionPane.showMessageDialog(null, "Venta no registrada");
-         }
-            
+        BaseDatos bd = new BaseDatos();
+        Productos prod;
+        Cliente cliente;
+        int retro;
+
+        prod = bd.ConsultarProductos(tipoProd);
+        cliente = bd.ConsultarClientes(tipoUsuer);
+
+        System.out.println("--------------------------ini--------------------------------");
+
+        System.out.println("total venta--> " + total);
+        System.out.println("prudocto --> " + prod.nombre + " id producto --> " + prod.id);
+        System.out.println("precio venta unitario --> " + prod.precioVenta);
+        System.out.println("nombe cliente --> " + cliente.nombre);
+        System.out.println("id cliente --> " + cliente.id);
+        System.out.println("cantidad --> " + cantidad);
+
+        System.out.println("--------------------------fin--------------------------------");
+
+        retro = bd.RegistrarVenta(cliente, prod, cantidad, total);
+        if (retro == 1) {
+            JOptionPane.showMessageDialog(null, "Venta registrada exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "Venta no registrada");
+        }
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         // TODO add your handling code here:
-        
-         BaseDatos bd = new BaseDatos();
-         Productos prod = new Productos();
-         tipoUsuer = mostrarClienteCB.getSelectedItem().toString();
-         tipoProd = Combo_Producto.getSelectedItem().toString();
-         System.out.println(" nombre--->> " + tipoUsuer);
-         System.out.println(" producto--->> " + tipoProd);
-         
-         prod = bd.ConsultarProductos(tipoProd);
-         
-         if(prod.stock<=0){
-             JOptionPane.showMessageDialog(null, "Producto agotado");
-         }
-         if(tipoUsuer.equals("USUARIOS") || tipoProd.equals("PRODUCTOS")){
-             JOptionPane.showMessageDialog(null, "Seleccione primero");
-         }
-         System.out.println("precio venta-->"+prod.precioVenta);
-         valUnit.setText(String.valueOf(prod.precioVenta));
-         
-         if(cantidadProd_text.getText().equals("")){
-             JOptionPane.showMessageDialog(null, "Ingrese cantidad");
-         }else{
-          cantidad = Integer.parseInt(cantidadProd_text.getText());
-         System.out.println("ff" + cantidad);
-         total = (float) (cantidad * prod.precioVenta);
-         ValorTotal_text.setText(String.valueOf(total));
-         }
-         
-        
-         
+
+        BaseDatos bd = new BaseDatos();
+        Productos prod = new Productos();
+        tipoUsuer = mostrarClienteCB.getSelectedItem().toString();
+        tipoProd = Combo_Producto.getSelectedItem().toString();
+        System.out.println(" nombre--->> " + tipoUsuer);
+        System.out.println(" producto--->> " + tipoProd);
+
+        prod = bd.ConsultarProductos(tipoProd);
+
+        if (prod.stock <= 0) {
+            JOptionPane.showMessageDialog(null, "Producto agotado");
+        }
+        if (tipoUsuer.equals("USUARIOS") || tipoProd.equals("PRODUCTOS")) {
+            JOptionPane.showMessageDialog(null, "Seleccione primero");
+        } else {
+            
+            if (cantidadProd_text.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Ingrese cantidad");
+            } else {
+                
+                System.out.println("precio venta-->" + prod.precioVenta);
+                valUnit.setText(String.valueOf(prod.precioVenta));
+                cantidad = Integer.parseInt(cantidadProd_text.getText());
+                System.out.println("ff" + cantidad);
+                total = (float) (cantidad * prod.precioVenta);
+                ValorTotal_text.setText(String.valueOf(total));
+            }
+        }
+
+
     }//GEN-LAST:event_btnCalcularActionPerformed
 
-    private void aggImg(JLabel labelEjm, String ruta){
-        
+    private void aggImg(JLabel labelEjm, String ruta) {
+
         this.imagen = new ImageIcon(ruta);
-        
+
         this.icono = new ImageIcon(
                 this.imagen.getImage().getScaledInstance(
-                        labelEjm.getWidth() ,
-                        labelEjm.getHeight(), 
+                        labelEjm.getWidth(),
+                        labelEjm.getHeight(),
                         Image.SCALE_DEFAULT)
         );
         labelEjm.setIcon(icono);
         this.repaint();
     }
-    
 
     /**
      * @param args the command line arguments
@@ -333,9 +331,8 @@ public final class VistaVendedor extends javax.swing.JFrame {
             }
         });
     }
-    
-    
-    public void DameCliente(){
+
+    public void DameCliente() {
         Connection con;
         Cliente cliente = new Cliente();
         try {
@@ -353,18 +350,17 @@ public final class VistaVendedor extends javax.swing.JFrame {
 
             while (rs.next()) {
                 cliente.setNombre(rs.getNString("nombre"));
-                mostrarClienteCB.addItem(cliente.toString());                 
+                mostrarClienteCB.addItem(cliente.toString());
             }
 
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "error de conexion" + e);
         }
- 
+
     }
-    
-    
-     public void DameProducto(){
+
+    public void DameProducto() {
         Connection con;
         Productos prod = new Productos();
         try {
@@ -382,16 +378,16 @@ public final class VistaVendedor extends javax.swing.JFrame {
 
             while (rs.next()) {
                 prod.setNombre(rs.getNString("nombre"));
-                Combo_Producto.addItem(prod.toString());                 
+                Combo_Producto.addItem(prod.toString());
             }
 
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, "error de conexion" + e);
         }
- 
+
     }
-     
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_Producto;
     private javax.swing.JLabel ValorTotal_text;

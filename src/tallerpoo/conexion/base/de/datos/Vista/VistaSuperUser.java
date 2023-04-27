@@ -5,6 +5,11 @@
  */
 package tallerpoo.conexion.base.de.datos;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author hp
@@ -13,6 +18,8 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
     String tipoUsuer;
     Usuarios user;
+    private ImageIcon imagen;
+    private Icon icono;
     
     /**
      * Creates new form VistaSuperUser
@@ -20,6 +27,9 @@ public class VistaSuperUser extends javax.swing.JFrame {
     public VistaSuperUser() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(imgSuperAdmin);
+        this.aggImg(this.imgSuperAdmin, "src/tallerpoo/conexion/base/de/datos/img/programador.png");
+        
         Usuarios user = new Usuarios();
         BaseDatos bd = new BaseDatos();
         
@@ -36,6 +46,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
         accion_realizar = new javax.swing.JComboBox<>();
         btnAceptar = new javax.swing.JButton();
+        imgSuperAdmin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +58,8 @@ public class VistaSuperUser extends javax.swing.JFrame {
                 btnAceptarActionPerformed(evt);
             }
         });
+
+        imgSuperAdmin.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,13 +74,19 @@ public class VistaSuperUser extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(accion_realizar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(157, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(imgSuperAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(accion_realizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
+                .addComponent(imgSuperAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -144,6 +163,19 @@ public class VistaSuperUser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    private void aggImg(JLabel labelEjm, String ruta){
+        
+        this.imagen = new ImageIcon(ruta);
+        
+        this.icono = new ImageIcon(
+                this.imagen.getImage().getScaledInstance(
+                        labelEjm.getWidth() ,
+                        labelEjm.getHeight(), 
+                        Image.SCALE_DEFAULT)
+        );
+        labelEjm.setIcon(icono);
+        this.repaint();
+    }
     /**
      * @param args the command line arguments
      */
@@ -180,5 +212,6 @@ public class VistaSuperUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> accion_realizar;
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JLabel imgSuperAdmin;
     // End of variables declaration//GEN-END:variables
 }

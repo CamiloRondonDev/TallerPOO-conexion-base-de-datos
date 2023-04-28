@@ -15,13 +15,16 @@ public class VistaCrearCliente extends javax.swing.JFrame {
      private String solicitud;
 
     Cliente cliente = new Cliente();
+    
     /**
-     * Creates new form CrearCliente
+     * 
+     * @param solicitud - trae el nombre de quien solicito abrir la ventana 
+     * este nombre lo colocara en la parte superior de la ventana
      */
     public VistaCrearCliente(String solicitud) {
         this.solicitud = solicitud;
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);//centrar ventana
          setNameAdmin.setText(solicitud);
     }
 
@@ -214,7 +217,7 @@ public class VistaCrearCliente extends javax.swing.JFrame {
         cliente.tel = telCliente_text.getText();
         cliente.cel = celCliente_text.getText();
         cliente.direccion = direccCliente_text.getText();
-       
+       //validar que no traiga campos vacios antes de insertar a la base de datos
         if (cliente.nombre.equals("") || cliente.dni.equals("") || cliente.mail.equals("") || cliente.cel.equals("") || cliente.tel.equals("") || cliente.direccion.equals("")) {
             JOptionPane.showMessageDialog(null, "llena todos los espacios");
         } else {

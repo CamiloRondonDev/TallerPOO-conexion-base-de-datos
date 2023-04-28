@@ -28,7 +28,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     public VistaAdmin(Usuarios user) {
         this.user = user;
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);//centrar la ventana
         this.setLocationRelativeTo(imgAdmin);
         this.aggImg(this.imgAdmin, "src/tallerpoo/conexion/base/de/datos/img/Admin.png");
         mostrarNombre_text.setText(user.nombre);
@@ -216,7 +216,11 @@ public class VistaAdmin extends javax.swing.JFrame {
         });
     }
     
-    
+     /**
+     * funcion para agregar imgagen en el label de forma dinámica al espacio
+     * @param labelEjm label donde quiero que la imagen se adapte de forma dinamica
+     * @param ruta ruta especifica de la imagen a mostrar
+     */
       private void aggImg(JLabel labelEjm, String ruta){
         
         this.imagen = new ImageIcon(ruta);

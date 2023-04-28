@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
 public class VistaCrearProveedor extends javax.swing.JFrame {
 
     /**
-     * Creates new form VistaCrearProveedor
+     * @param solicitud - trae el nombre de quien solicito abrir la ventana 
+     * este nombre lo colocara en la parte superior de la ventana
      */
     public VistaCrearProveedor(String solicitud) {
         initComponents();

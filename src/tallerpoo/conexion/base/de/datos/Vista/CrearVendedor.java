@@ -18,7 +18,8 @@ public class CrearVendedor extends javax.swing.JFrame {
      
 
     /**
-     * Creates new form VistaAdmin
+     * @param user - se utiliza para mostrar el nombre del que inicio sesion
+     * @param solicitud - se tuliza para mostrar que rol solicito abrar la ventana
      */
     public CrearVendedor(Usuarios user , String solicitud) {
         this.solicitud = solicitud;
@@ -195,13 +196,14 @@ public class CrearVendedor extends javax.swing.JFrame {
     private void btnCrearVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearVendedorActionPerformed
         // TODO add your handling code here:
         BaseDatos bd = new BaseDatos();
-        
+  
         user.nombre = nomVend_text.getText();
         user.dni = dniVende_text.getText();
         user.mail = mailVend_text.getText();
         user.tel = telVend_text.getText();
         user.cel = celVend_text.getText();
         
+        //valida que no vengan vacios los campos antes de enviar a la base de datos
         if(user.nombre.equals("")|| user.dni.equals("")||user.mail.equals("")||user.cel.equals("")||user.tel.equals("")){
           JOptionPane.showMessageDialog(null, "llena todos los espacios");
         }else{

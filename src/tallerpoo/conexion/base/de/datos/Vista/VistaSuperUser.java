@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 public class VistaSuperUser extends javax.swing.JFrame {
 
     String tipoUsuer;
-    //Usuarios user;
     private ImageIcon imagen;
     private Icon icono;
     
@@ -29,12 +28,9 @@ public class VistaSuperUser extends javax.swing.JFrame {
      */
     public VistaSuperUser() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);//centrar ventana
         this.setLocationRelativeTo(imgSuperAdmin);
         this.aggImg(this.imgSuperAdmin, "src/tallerpoo/conexion/base/de/datos/img/programador.png");
-
-      
-        
     }
 
     /**
@@ -139,7 +135,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
         tipoUsuer = accion_realizar.getSelectedItem().toString();
         System.out.println(tipoUsuer);
         
-        switch (tipoUsuer) {
+        switch (tipoUsuer) {//seleccionar opcion a realizar
             case "Agregar Admin":
                 System.out.println("AGG ADMIN");
                 user.id_Rol = 5;
@@ -203,12 +199,17 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        VistaLogin visLogin = new VistaLogin(); 
+        VistaLogin visLogin = new VistaLogin(); //boton cerrar sesion
         dispose();//para cerrarla al ir a otra 
         visLogin.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * funcion para agregar imgagen en el label de forma dinámica al espacio
+     * @param labelEjm label donde quiero que la imagen se adapte de forma dinamica
+     * @param ruta ruta especifica de la imagen a mostrar
+     */
     private void aggImg(JLabel labelEjm, String ruta){
         
         this.imagen = new ImageIcon(ruta);

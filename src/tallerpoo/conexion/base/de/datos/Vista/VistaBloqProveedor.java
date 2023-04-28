@@ -17,7 +17,7 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
      */
     public VistaBloqProveedor() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);//centrar ventana
     }
 
     /**

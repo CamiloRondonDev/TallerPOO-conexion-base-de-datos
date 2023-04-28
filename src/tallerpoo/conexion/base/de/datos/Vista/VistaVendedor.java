@@ -31,11 +31,12 @@ public final class VistaVendedor extends javax.swing.JFrame {
     float total;
 
     /**
-     * Creates new form VistaVendedor
+     * 
+     * @param user - trae la informaciòn del vendedor que va a realizar la venta
      */
     public VistaVendedor(Usuarios user) {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);//centrar ventana
         this.setLocationRelativeTo(imgVendedor);
         this.aggImg(this.imgVendedor, "src/tallerpoo/conexion/base/de/datos/img/cajero.png");
         DameCliente();
@@ -286,7 +287,6 @@ public final class VistaVendedor extends javax.swing.JFrame {
                 System.out.println("precio venta-->" + prod.precioVenta);
                 valUnit.setText(String.valueOf(prod.precioVenta));
                 cantidad = Integer.parseInt(cantidadProd_text.getText());
-                System.out.println("ff" + cantidad);
                 total = (float) (cantidad * prod.precioVenta);
                 ValorTotal_text.setText(String.valueOf(total));
             }
@@ -302,6 +302,11 @@ public final class VistaVendedor extends javax.swing.JFrame {
         visLogin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * funcion para agregar imgagen en el label de forma dinámica al espacio
+     * @param labelEjm label donde quiero que la imagen se adapte de forma dinamica
+     * @param ruta ruta especifica de la imagen a mostrar
+     */
     private void aggImg(JLabel labelEjm, String ruta) {
 
         this.imagen = new ImageIcon(ruta);
@@ -351,6 +356,11 @@ public final class VistaVendedor extends javax.swing.JFrame {
         });
     }
 
+    
+    /**
+     * esta funcion conecta a la base de datos y selecciona todos los clientes
+     * para posteriormente mostrarlos en el comboBox de manera dinámica
+     */
     public void DameCliente() {
         Connection con;
         Cliente cliente = new Cliente();
@@ -379,6 +389,10 @@ public final class VistaVendedor extends javax.swing.JFrame {
 
     }
 
+    /**
+     * esta funcion se encarga de conectarse a la base de datos consultar todos los productos
+     * para posteriormete mostrarlos en el comboBox de manera dinámica
+     */
     public void DameProducto() {
         Connection con;
         Productos prod = new Productos();

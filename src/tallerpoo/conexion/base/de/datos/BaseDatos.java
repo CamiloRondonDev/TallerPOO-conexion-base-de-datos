@@ -24,6 +24,10 @@ class BaseDatos {
     final String USER_BD = "root";
     final String PASSWORD = "";
 
+    /**
+     * se encarga de realizar la conexion a la base de datos y realizar la insercion de los mismos
+     * @param user - informacion de los usuarios a insertar
+     */
     public void insertarUsuarios(Usuarios user) {
 
         try {
@@ -51,6 +55,11 @@ class BaseDatos {
 
     }
 
+    /**
+     * 
+     * @param producto
+     * @return 
+     */
     public Productos ConsultarProductos(String producto) {
 
         Productos prod = new Productos();

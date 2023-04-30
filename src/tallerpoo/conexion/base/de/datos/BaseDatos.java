@@ -293,5 +293,53 @@ class BaseDatos {
         }
 
     }
+    
+    public Venta ConsultarVenta(){
+        
+        Venta venta = new Venta();
+        int i =0;
+    
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement consulVenta = con.createStatement();
+            System.out.println("correcto conexion Consulta Venta");
+            
+            
+             Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM venta");//consulta a realizar
+            System.out.println("consulta exitosa");
+            
+
+            while (rs.next()) {
+                venta.id = rs.getInt("id");
+                venta.idProducto = rs.getInt("idProducto");
+                venta.idCliente = rs.getInt("idCliente");
+                venta.cantidad = rs.getInt("cantidad");
+                venta.valorUnitario = rs.getFloat("valorUnitario");
+                venta.valorTotal = rs.getFloat("valorTotal");
+                venta.fecha = rs.getString("fecha");
+                
+                System.out.println(venta.id);
+                System.out.println(venta.idProducto);
+                System.out.println(venta.idCliente);
+                System.out.println(venta.cantidad);
+                System.out.println(venta.valorUnitario);
+                System.out.println(venta.valorTotal);
+                System.out.println(venta.fecha);
+                i++;
+                   
+            }
+            venta.totalVentas = i;
+            return venta;
+            
+            
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+        return venta;
+        
+    }
 
 }

@@ -9,6 +9,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+//import tallerpoo.conexion.base.de.datos.Vista.VistaVerRegistros;
 
 /**
  *
@@ -188,6 +189,8 @@ public class VistaSuperUser extends javax.swing.JFrame {
                 
             case "Registro ventas":
                 System.out.println("REG VENTAS");
+                VistaVerRegistros verRegistros = new VistaVerRegistros();
+                verRegistros.setVisible(true);
                 break;
                 
             default:

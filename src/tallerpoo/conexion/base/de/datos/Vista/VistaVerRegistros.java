@@ -27,7 +27,7 @@ public class VistaVerRegistros extends javax.swing.JFrame {
         modeloTabla.addColumn("Val total");
         modeloTabla.addColumn("Fecha");
         
-        this.tablaMostrar.setModel(modeloTabla);
+        this.tablaMostrar_id.setModel(modeloTabla);
     }
 
 
@@ -43,7 +43,7 @@ public class VistaVerRegistros extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablaMostrar = new javax.swing.JTable();
+        tablaMostrar_id = new javax.swing.JTable();
         btn_insertar = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -55,7 +55,7 @@ public class VistaVerRegistros extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tablaMostrar.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMostrar_id.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -63,7 +63,7 @@ public class VistaVerRegistros extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tablaMostrar);
+        jScrollPane2.setViewportView(tablaMostrar_id);
 
         btn_insertar.setText("insertar");
         btn_insertar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,16 +101,16 @@ public class VistaVerRegistros extends javax.swing.JFrame {
     private void btn_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertarActionPerformed
         // TODO add your handling code here:
         BaseDatos bd = new BaseDatos();
-       venta = bd.ConsultarVenta();
-       for(int i = 0 ; i< venta.totalVentas ; i++){
-        String []info = new String[5];
-        info[0] = String.valueOf( venta.idCliente);
-        info[1] = String.valueOf(venta.idProducto);
-        info[2] = String.valueOf(venta.cantidad);
-        info[3] = String.valueOf(venta.valorTotal);
-        info[4] = venta.fecha;
-        modeloTabla.addRow(info);
-       }
+       venta = bd.ConsultarVenta(tablaMostrar_id ,modeloTabla );
+//       for(int i = 0 ; i< venta.totalVentas ; i++){
+//        String []info = new String[5];
+//        info[0] = String.valueOf( venta.idCliente);
+//        info[1] = String.valueOf(venta.idProducto);
+//        info[2] = String.valueOf(venta.cantidad);
+//        info[3] = String.valueOf(venta.valorTotal);
+//        info[4] = venta.fecha;
+//        modeloTabla.addRow(info);
+//       }
        
     
         
@@ -157,6 +157,6 @@ public class VistaVerRegistros extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablaMostrar;
+    private javax.swing.JTable tablaMostrar_id;
     // End of variables declaration//GEN-END:variables
 }

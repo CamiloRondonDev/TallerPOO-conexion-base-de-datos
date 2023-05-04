@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import tallerpoo.conexion.base.de.datos.entidades.*;
 
 /**
@@ -294,10 +296,9 @@ class BaseDatos {
 
     }
     
-    public Venta ConsultarVenta(){
+    public Venta ConsultarVenta(JTable tabla , DefaultTableModel modeloTabla ){
         
         Venta venta = new Venta();
-        int i =0;
     
         try {
             con = null;
@@ -319,19 +320,16 @@ class BaseDatos {
                 venta.cantidad = rs.getInt("cantidad");
                 venta.valorUnitario = rs.getFloat("valorUnitario");
                 venta.valorTotal = rs.getFloat("valorTotal");
-                venta.fecha = rs.getString("fecha");
-                
-                System.out.println(venta.id);
-                System.out.println(venta.idProducto);
-                System.out.println(venta.idCliente);
-                System.out.println(venta.cantidad);
-                System.out.println(venta.valorUnitario);
-                System.out.println(venta.valorTotal);
-                System.out.println(venta.fecha);
-                i++;
-                   
+                venta.fecha = rs.getString("fecha");            
+
+                String[] info = new String[5];
+                info[0] = String.valueOf(venta.idCliente);
+                info[1] = String.valueOf(venta.idProducto);
+                info[2] = String.valueOf(venta.cantidad);
+                info[3] = String.valueOf(venta.valorTotal);
+                info[4] = venta.fecha;
+                modeloTabla.addRow(info); 
             }
-            venta.totalVentas = i;
             return venta;
             
             

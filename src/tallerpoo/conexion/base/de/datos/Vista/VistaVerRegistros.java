@@ -13,7 +13,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaVerRegistros extends javax.swing.JFrame {
 
-    Venta venta;
     DefaultTableModel modeloTabla = new DefaultTableModel();
     /**
      * Creates new form VistaVerRegistros
@@ -101,20 +100,7 @@ public class VistaVerRegistros extends javax.swing.JFrame {
     private void btn_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertarActionPerformed
         // TODO add your handling code here:
         BaseDatos bd = new BaseDatos();
-       venta = bd.ConsultarVenta(tablaMostrar_id ,modeloTabla );
-//       for(int i = 0 ; i< venta.totalVentas ; i++){
-//        String []info = new String[5];
-//        info[0] = String.valueOf( venta.idCliente);
-//        info[1] = String.valueOf(venta.idProducto);
-//        info[2] = String.valueOf(venta.cantidad);
-//        info[3] = String.valueOf(venta.valorTotal);
-//        info[4] = venta.fecha;
-//        modeloTabla.addRow(info);
-//       }
-       
-    
-        
-
+            bd.ConsultarVenta(tablaMostrar_id ,modeloTabla );
     }//GEN-LAST:event_btn_insertarActionPerformed
 
     /**

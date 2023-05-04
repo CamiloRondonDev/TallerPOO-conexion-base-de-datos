@@ -238,8 +238,8 @@ public final class VistaVendedor extends javax.swing.JFrame {
         Cliente cliente;
         int retro;
 
-        prod = bd.ConsultarProductos(tipoProd);
-        cliente = bd.ConsultarClientes(tipoUsuer);
+        prod = bd.ConsultarProductos(tipoProd, 0, 1);
+        cliente = bd.ConsultarClientes(tipoUsuer , 1 , 1);
 
         System.out.println("--------------------------ini--------------------------------");
 
@@ -271,7 +271,7 @@ public final class VistaVendedor extends javax.swing.JFrame {
         System.out.println(" nombre--->> " + tipoUsuer);
         System.out.println(" producto--->> " + tipoProd);
 
-        prod = bd.ConsultarProductos(tipoProd);
+        prod = bd.ConsultarProductos(tipoProd, 0 , 1);
 
         if (prod.stock <= 0) {
             JOptionPane.showMessageDialog(null, "Producto agotado");

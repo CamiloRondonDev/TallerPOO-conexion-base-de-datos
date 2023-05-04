@@ -62,7 +62,7 @@ class BaseDatos {
      * @param producto
      * @return 
      */
-    public Productos ConsultarProductos(String producto) {
+    public Productos ConsultarProductos(String producto , int id_prod , int val) {
 
         Productos prod = new Productos();
 
@@ -88,10 +88,16 @@ class BaseDatos {
                 prod.stock = rs.getInt("stock");
                 prod.estado = rs.getInt("estado");
 
-                if (prod.nombre.equals(producto)) {
-                    return prod;
+                if (val == 1) { //consulta por nombre
+                    if (prod.nombre.equals(producto)) {
+                        return prod;
+                    }
+                } else if (val == 2) {//consulta por id_producto
+                    if (prod.id == id_prod) {
+                        return prod;
+                    }
                 }
-
+                
             }
 
         } catch (Exception e) {
@@ -137,7 +143,7 @@ class BaseDatos {
 
     }
 
-    public Cliente ConsultarClientes(String clien) {
+    public Cliente ConsultarClientes(String clien , int client_id, int val) {
 
         Cliente cliente = new Cliente();
 
@@ -163,9 +169,17 @@ class BaseDatos {
                 cliente.cel = rs.getString("cel");
                 cliente.mail = rs.getString("mail");
                 cliente.direccion = rs.getString("direccion");
+                
+                if (val == 1) {//buscar por nombre
 
-                if (cliente.nombre.equals(clien)) {
-                    return cliente;
+                    if (cliente.nombre.equals(clien)) {
+                        return cliente;
+                    }
+
+                } else if (val == 2) {//buscar por id_cliente
+                    if (cliente.id == client_id) {
+                        return cliente;
+                    }
                 }
 
             }
@@ -299,7 +313,9 @@ class BaseDatos {
     public Venta ConsultarVenta(JTable tabla , DefaultTableModel modeloTabla ){
         
         Venta venta = new Venta();
-    
+        Cliente cliente;
+        Productos prod;
+        
         try {
             con = null;
             Class.forName(DRIVE);
@@ -321,10 +337,16 @@ class BaseDatos {
                 venta.valorUnitario = rs.getFloat("valorUnitario");
                 venta.valorTotal = rs.getFloat("valorTotal");
                 venta.fecha = rs.getString("fecha");            
+                
+               cliente = ConsultarClientes("", venta.idCliente,2);
+               prod = ConsultarProductos("", venta.idProducto,2);
+               
+               
+                
 
                 String[] info = new String[5];
-                info[0] = String.valueOf(venta.idCliente);
-                info[1] = String.valueOf(venta.idProducto);
+                info[0] = String.valueOf(cliente.nombre);
+                info[1] = String.valueOf(prod.nombre);
                 info[2] = String.valueOf(venta.cantidad);
                 info[3] = String.valueOf(venta.valorTotal);
                 info[4] = venta.fecha;

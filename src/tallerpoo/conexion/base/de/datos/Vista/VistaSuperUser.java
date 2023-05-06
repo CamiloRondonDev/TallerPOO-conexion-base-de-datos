@@ -9,6 +9,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import tallerpoo.conexion.base.de.datos.Vista.VistaCrearProducto;
 //import tallerpoo.conexion.base.de.datos.Vista.VistaVerRegistros;
 
 /**
@@ -73,7 +74,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        accion_realizar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Agregar Admin", "Agregar Vendedor", "Agregar Cliente", "Agregar Proveedor", "Bloq. Admin", "Bloq. Vendedor", "Bloq. Proveedor", "Bloq. Cliente", "Registro ventas" }));
+        accion_realizar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Agregar Admin", "Agregar Vendedor", "Agregar Cliente", "Agregar Proveedor", "Agregar Producto", "Bloq. Admin", "Bloq. Vendedor", "Bloq. Proveedor", "Bloq. Cliente", "Registro ventas" }));
 
         btnAceptar.setText("ACEPTAR");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +192,13 @@ public class VistaSuperUser extends javax.swing.JFrame {
                 System.out.println("REG VENTAS");
                 VistaVerRegistros verRegistros = new VistaVerRegistros();
                 verRegistros.setVisible(true);
+                break;
+                
+            case "Agregar Producto":
+                System.out.println("REG PRODUCTO");
+                VistaCrearProducto crearProducto = new VistaCrearProducto();
+                crearProducto.setVisible(true);
+                
                 break;
                 
             default:

@@ -361,5 +361,27 @@ class BaseDatos {
         return venta;
         
     }
+    
+        public void insertarProductos(Productos prod) {
+
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            String insert = "insert into producto (nombre, precioCompra, precioVenta , stock)"
+                    + "values ('" + prod.nombre + "', " + prod.precioCompra + ", " + prod.precioVenta + ", " + prod.stock +")";
+            System.out.println("resultado--> " + insert);
+            int valor = inserData.executeUpdate(insert);
+            System.out.println("retorno > " + valor);
+            JOptionPane.showMessageDialog(null, "Cliente creado exitosamente");
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
 
 }

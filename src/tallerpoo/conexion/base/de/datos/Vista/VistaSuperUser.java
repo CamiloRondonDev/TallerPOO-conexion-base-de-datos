@@ -9,7 +9,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import tallerpoo.conexion.base.de.datos.Vista.VistaCrearProducto;
+//import tallerpoo.conexion.base.de.datos;
 //import tallerpoo.conexion.base.de.datos.Vista.VistaVerRegistros;
 
 /**

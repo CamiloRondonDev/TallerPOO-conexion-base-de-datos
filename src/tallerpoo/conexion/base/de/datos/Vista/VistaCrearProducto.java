@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tallerpoo.conexion.base.de.datos.Vista;
+package tallerpoo.conexion.base.de.datos;
 import javax.swing.JOptionPane;
+import tallerpoo.conexion.base.de.datos.entidades.Productos;
 
 /**
  *
@@ -12,6 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class VistaCrearProducto extends javax.swing.JFrame {
 
+    Productos prod = new Productos();
+    BaseDatos bd = new BaseDatos();
     /**
      * Creates new form VistaCrearProducto
      */
@@ -31,9 +34,9 @@ public class VistaCrearProducto extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         nom_prod_text = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        precioVenta = new javax.swing.JTextField();
         canti_text = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        precio_Unit = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -104,9 +107,9 @@ public class VistaCrearProducto extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel4))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(precio_Unit, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(precioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,8 +143,8 @@ public class VistaCrearProducto extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precio_Unit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(canti_text, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAceptar)
@@ -157,10 +160,16 @@ public class VistaCrearProducto extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        if(!ValirdarNumero(canti_text.getText())){
+        if(!ValirdarNumero(canti_text.getText()) || !ValirdarNumero(precioVenta.getText()) || !ValirdarNumero(precio_Unit.getText())){
             JOptionPane.showMessageDialog(null, "la cantidad debe ser numerica");
+          
         }else{
-         JOptionPane.showMessageDialog(null, "perfecto");
+        // JOptionPane.showMessageDialog(null, "perfecto");
+        prod.nombre = nom_prod_text.getText();
+        prod.precioCompra = Double.parseDouble(precio_Unit.getText()) ;
+        prod.precioVenta = Double.parseDouble( precioVenta.getText());
+        prod.stock = Integer.parseInt(canti_text.getText());
+        bd.insertarProductos(prod);
         }
         
         
@@ -228,8 +237,8 @@ public class VistaCrearProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField nom_prod_text;
+    private javax.swing.JTextField precioVenta;
+    private javax.swing.JTextField precio_Unit;
     // End of variables declaration//GEN-END:variables
 }

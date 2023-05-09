@@ -23,6 +23,8 @@ import tallerpoo.conexion.base.de.datos.entidades.Productos;
  */
 public final class VistaVendedor extends javax.swing.JFrame {
 
+    BaseDatos bd = new BaseDatos();
+    Productos prod;
     private ImageIcon imagen;
     private Icon icono;
     String tipoUsuer;
@@ -70,6 +72,8 @@ public final class VistaVendedor extends javax.swing.JFrame {
         valUnit = new javax.swing.JLabel();
         ValorTotal_text = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        stock_set = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(174, 214, 241));
@@ -133,6 +137,11 @@ public final class VistaVendedor extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("stock");
+
+        stock_set.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stock_set.setText("  ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,13 +162,21 @@ public final class VistaVendedor extends javax.swing.JFrame {
                         .addComponent(btnCalcular)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(stock_set, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(imgVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(ValorTotal_text, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(32, 32, 32))
             .addGroup(layout.createSequentialGroup()
                 .addGap(176, 176, 176)
@@ -187,21 +204,28 @@ public final class VistaVendedor extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(mostrarNombreVend)))
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Combo_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cantidadProd_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(valUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(mostrarClienteCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imgVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Combo_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(stock_set))
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cantidadProd_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(valUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)
+                                .addComponent(mostrarClienteCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(imgVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -233,8 +257,7 @@ public final class VistaVendedor extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        BaseDatos bd = new BaseDatos();
-        Productos prod;
+
         Cliente cliente;
         int retro;
 
@@ -273,8 +296,8 @@ public final class VistaVendedor extends javax.swing.JFrame {
 
         prod = bd.ConsultarProductos(tipoProd, 0 , 1);
 
-        if (prod.stock <= 0) {
-            JOptionPane.showMessageDialog(null, "Producto agotado");
+        if (prod.stock < Integer.parseInt(cantidadProd_text.getText())) {
+            JOptionPane.showMessageDialog(null, "Producto agotado \n quedan \n\t" + prod.stock);
         }
         if (tipoUsuer.equals("USUARIOS") || tipoProd.equals("PRODUCTOS")) {
             JOptionPane.showMessageDialog(null, "Seleccione primero");
@@ -288,7 +311,8 @@ public final class VistaVendedor extends javax.swing.JFrame {
                 valUnit.setText(String.valueOf(prod.precioVenta));
                 cantidad = Integer.parseInt(cantidadProd_text.getText());
                 total = (float) (cantidad * prod.precioVenta);
-                ValorTotal_text.setText(String.valueOf(total));
+                ValorTotal_text.setText(String.valueOf(total)); 
+                stock_set.setText(String.valueOf(prod.stock));
             }
         }
 
@@ -379,7 +403,11 @@ public final class VistaVendedor extends javax.swing.JFrame {
 
             while (rs.next()) {
                 cliente.setNombre(rs.getNString("nombre"));
-                mostrarClienteCB.addItem(cliente.toString());
+                cliente.estado = rs.getInt("estado");
+                 if(cliente.estado == 0 ){
+                  continue;
+                }    
+                mostrarClienteCB.addItem(cliente.toString());                       
             }
 
         } catch (Exception e) {
@@ -411,6 +439,10 @@ public final class VistaVendedor extends javax.swing.JFrame {
 
             while (rs.next()) {
                 prod.setNombre(rs.getNString("nombre"));
+                prod.estado = rs.getInt("estado");
+                if(prod.estado == 0 ){
+                  continue;
+                }
                 Combo_Producto.addItem(prod.toString());
             }
 
@@ -433,8 +465,10 @@ public final class VistaVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JComboBox<String> mostrarClienteCB;
     private javax.swing.JLabel mostrarNombreVend;
+    private javax.swing.JLabel stock_set;
     private javax.swing.JLabel valUnit;
     // End of variables declaration//GEN-END:variables
 }

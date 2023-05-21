@@ -259,8 +259,9 @@ class BaseDatos {
 
     }
     
-        public void DesactivarProveedor(Proveedores provee) {
+        public void DesactivarProveedor(Proveedores provee , int accion) {
 
+             String update ;
         try {
             con = null;
             Class.forName(DRIVE);
@@ -268,7 +269,12 @@ class BaseDatos {
             Statement inserData = con.createStatement();
             System.out.println("correcto conexion insert");
 
-            String update = "update proveedor set estado = 0 where nit = " +provee.nit;
+            if (accion == 1) {
+                update = "update proveedor set estado = 1 where nit = " + provee.nit;
+            } else {
+                update = "update proveedor set estado = 0 where nit = " + provee.nit;
+            }
+            
             System.out.println("resultado--> " + update);
             int valor = inserData.executeUpdate(update);
             System.out.println("retorno > " + valor);
@@ -455,13 +461,13 @@ class BaseDatos {
                 proveed.cel = rs.getString("cel");
                 proveed.mail = rs.getString("mail");
                 proveed.direccion = rs.getString("direccion");
-                proveed.id = rs.getInt("estado");
+                proveed.estado = rs.getInt("estado");
 
                     if (proveed.nit.equals(prov_nit)) {
                         return proveed;
                     }
-
             }
+            return proveed;
 
         } catch (Exception e) {
 
@@ -469,5 +475,31 @@ class BaseDatos {
 
         }
         return proveed;
+    }
+       
+              public void ActualizarProveedor(Proveedores provee) {
+
+             String update ;
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+                //update = "update proveedor set estado = 0, nombre = "++ "  where nit = " + provee.nit;
+            
+            System.out.println("resultado--> " + update);
+            int valor = inserData.executeUpdate(update);
+            System.out.println("retorno > " + valor);
+            if(valor ==1 ){
+            JOptionPane.showMessageDialog(null, "Porveedor bloqueado exitosamente");
+            }
+            
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
     }
 }

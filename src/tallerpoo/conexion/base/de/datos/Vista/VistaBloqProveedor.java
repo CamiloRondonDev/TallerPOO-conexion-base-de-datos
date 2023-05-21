@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 public class VistaBloqProveedor extends javax.swing.JFrame {
     BaseDatos bd = new BaseDatos();
     Proveedores prov = new Proveedores();
+    int aux;
 
     /**
      * Creates new form VistaBloqProveedor
@@ -253,6 +254,14 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
         correo_id.setText(prov.mail);
         telefono_id.setText(prov.tel);
         celular_id.setText(prov.cel);
+        
+        if(prov.estado == 0){
+         btn_desac_provee1.setText("ACTIVAR");
+         aux = 1;
+        }else if (prov.estado == 1){
+         btn_desac_provee1.setText("DESACTIVAR");
+         aux = 0;
+        }
 
         
     }//GEN-LAST:event_tabla_proveedoresMouseClicked
@@ -292,8 +301,12 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
 
     private void btn_desac_provee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desac_provee1ActionPerformed
         // TODO add your handling code here:
+       
+        System.out.println( btn_desac_provee1.getText());
+        
+        
         prov.nit = nit_id.getText();
-        bd.DesactivarProveedor(prov);
+        bd.DesactivarProveedor(prov, aux);
         DefaultTableModel model = (DefaultTableModel) tabla_proveedores.getModel();
         model.setRowCount(0);
         bd.ConsultarProveedores(tabla_proveedores ,modeloTabla);

@@ -383,5 +383,49 @@ class BaseDatos {
         }
 
     }
+        
+       public Proveedores ConsultarProveedores(JTable tabla , DefaultTableModel modeloTabla ){
+        Proveedores proveed = new Proveedores();
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement consulVenta = con.createStatement();
+            System.out.println("correcto conexion Consulta Venta");
+            
+            
+             Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM proveedor");//consulta a realizar
+            System.out.println("consulta exitosa");
+            
+
+            while (rs.next()) {
+                proveed.id = rs.getInt("id");
+                proveed.nombre = rs.getString("nombre");
+                proveed.nit = rs.getString("nit");
+                proveed.tel = rs.getString("tel");
+                proveed.cel = rs.getString("cel");
+                proveed.mail = rs.getString("mail");
+                proveed.direccion = rs.getString("direccion");      
+                 proveed.estado = rs.getInt("estado");   
+                
+                String[] info = new String[5];
+                info[0] = String.valueOf(proveed.nombre);
+                info[1] = String.valueOf(proveed.nit);
+                info[2] = String.valueOf(proveed.mail);
+                info[3] = String.valueOf(proveed.direccion);
+                info[4] = String.valueOf(proveed.estado);
+                
+                modeloTabla.addRow(info); 
+            }
+            return proveed;
+            
+            
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+        return proveed;
+        
+    }
 
 }

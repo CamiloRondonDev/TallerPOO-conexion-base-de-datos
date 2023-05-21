@@ -200,6 +200,7 @@ public class VistaSuperUser extends javax.swing.JFrame {
          System.out.println("BLOQ PROVEE");
          VistaBloqProveedor vistaBloProvee = new VistaBloqProveedor();
          vistaBloProvee.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void accion_realizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accion_realizarActionPerformed

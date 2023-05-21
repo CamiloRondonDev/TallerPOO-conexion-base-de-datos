@@ -272,10 +272,10 @@ public class VistaCrearProducto extends javax.swing.JFrame {
                 prod.precioVenta = Double.parseDouble(precioVen_id.getText());
                 prod.stock = Integer.parseInt( stock_id.getText());
                 
-        //        bd.ActualizarProveedor(prov);
-        //        DefaultTableModel model = (DefaultTableModel) tabla_Productos.getModel();
-        //        model.setRowCount(0);
-        //        bd.ConsultarProductosTabla(tabla_Productos ,modeloTabla);
+                bd.ActualizarProductos(prod);
+                DefaultTableModel model = (DefaultTableModel) tabla_Productos.getModel();
+                model.setRowCount(0);
+                bd.ConsultarProductosTabla(tabla_Productos ,modeloTablaProd);
     }//GEN-LAST:event_btn_actu_prodActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed

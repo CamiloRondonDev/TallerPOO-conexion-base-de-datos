@@ -27,7 +27,9 @@ class BaseDatos {
     final String PASSWORD = "";
 
     /**
-     * se encarga de realizar la conexion a la base de datos y realizar la insercion de los mismos
+     * se encarga de realizar la conexion a la base de datos y realizar la
+     * insercion de los mismos
+     *
      * @param user - informacion de los usuarios a insertar
      */
     public void insertarUsuarios(Usuarios user) {
@@ -44,12 +46,11 @@ class BaseDatos {
             System.out.println("resultado--> " + insert);
             int valor = inserData.executeUpdate(insert);
             System.out.println("retorno > " + valor);
-            if(user.id_Rol == 5){
-             JOptionPane.showMessageDialog(null, "Admin creado exitosamente");
-            }else{
-             JOptionPane.showMessageDialog(null, "Vendedor creado exitosamente");
+            if (user.id_Rol == 5) {
+                JOptionPane.showMessageDialog(null, "Admin creado exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Vendedor creado exitosamente");
             }
-            
 
         } catch (Exception e) {
             System.out.println("error de conexion" + e);
@@ -58,11 +59,11 @@ class BaseDatos {
     }
 
     /**
-     * 
+     *
      * @param producto
-     * @return 
+     * @return
      */
-    public Productos ConsultarProductos(String producto , int id_prod , int val) {
+    public Productos ConsultarProductos(String producto, int id_prod, int val) {
 
         Productos prod = new Productos();
 
@@ -97,7 +98,7 @@ class BaseDatos {
                         return prod;
                     }
                 }
-                
+
             }
 
         } catch (Exception e) {
@@ -109,7 +110,8 @@ class BaseDatos {
         return prod;
 
     }
-     public Productos ConsultarProductosNombre(String producto) {
+
+    public Productos ConsultarProductosNombre(String producto) {
 
         Productos prod = new Productos();
 
@@ -135,12 +137,10 @@ class BaseDatos {
                 prod.stock = rs.getInt("stock");
                 prod.estado = rs.getInt("estado");
 
-                    if (prod.nombre.equals(producto)) {
-                        return prod;
-                    }
-                } 
-                
-            
+                if (prod.nombre.equals(producto)) {
+                    return prod;
+                }
+            }
 
         } catch (Exception e) {
 
@@ -151,8 +151,8 @@ class BaseDatos {
         return prod;
 
     }
-    
-        public Productos ConsultarProductosTabla(JTable tabla , DefaultTableModel modeloTabla ){
+
+    public Productos ConsultarProductosTabla(JTable tabla, DefaultTableModel modeloTabla) {
         Productos produc = new Productos();
         try {
             con = null;
@@ -160,44 +160,40 @@ class BaseDatos {
             con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
             Statement consulVenta = con.createStatement();
             System.out.println("correcto conexion Consulta Venta");
-            
-            
-             Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
             ResultSet rs = stmt.executeQuery("SELECT * FROM producto");//consulta a realizar
             System.out.println("consulta exitosa");
-            
 
             while (rs.next()) {
                 produc.id = rs.getInt("id");
                 produc.nombre = rs.getString("nombre");
                 produc.precioCompra = rs.getFloat("precioCompra");
                 produc.precioVenta = rs.getFloat("precioVenta");
-                produc.stock = rs.getInt("stock");    
-                 produc.estado = rs.getInt("estado");   
-                
+                produc.stock = rs.getInt("stock");
+                produc.estado = rs.getInt("estado");
+
                 String[] info = new String[5];
                 info[0] = String.valueOf(produc.nombre);
                 info[1] = String.valueOf(produc.precioCompra);
                 info[2] = String.valueOf(produc.precioVenta);
                 info[3] = String.valueOf(produc.stock);
                 info[4] = String.valueOf(produc.estado);
-                
-                modeloTabla.addRow(info); 
+
+                modeloTabla.addRow(info);
             }
             return produc;
-            
-            
+
         } catch (Exception e) {
             System.out.println("error de conexion" + e);
         }
         return produc;
-        
+
     }
 
-        
-         public void DesactivarProducto(Productos prod , int accion) {
+    public void DesactivarProducto(Productos prod, int accion) {
 
-             String update ;
+        String update;
         try {
             con = null;
             Class.forName(DRIVE);
@@ -210,14 +206,37 @@ class BaseDatos {
             } else {
                 update = "update producto set estado = 0 where id = " + prod.id;
             }
-            
+
             System.out.println("resultado--> " + update);
             int valor = inserData.executeUpdate(update);
             System.out.println("retorno > " + valor);
-            if(valor ==1 ){
-            JOptionPane.showMessageDialog(null, "bloqueado exitosamente");
+            if (valor == 1) {
+                JOptionPane.showMessageDialog(null, "bloqueado exitosamente");
             }
-            
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
+    public void ActualizarProductos(Productos prod) {
+
+        String update;
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            update = "update producto set nombre = '" + prod.nombre + "', precioCompra = " + prod.precioCompra + ", precioVenta = " + prod.precioVenta + ", stock = " + prod.stock + " where id = " + prod.id;
+
+            System.out.println("resultado--> " + update);
+            int valor = inserData.executeUpdate(update);
+            System.out.println("retorno > " + valor);
+            if (valor == 1) {
+                JOptionPane.showMessageDialog(null, "correcto");
+            }
 
         } catch (Exception e) {
             System.out.println("error de conexion" + e);
@@ -257,7 +276,7 @@ class BaseDatos {
 
     }
 
-    public Cliente ConsultarClientes(String clien , int client_id, int val) {
+    public Cliente ConsultarClientes(String clien, int client_id, int val) {
 
         Cliente cliente = new Cliente();
 
@@ -283,7 +302,7 @@ class BaseDatos {
                 cliente.cel = rs.getString("cel");
                 cliente.mail = rs.getString("mail");
                 cliente.direccion = rs.getString("direccion");
-                
+
                 if (val == 1) {//buscar por nombre
 
                     if (cliente.nombre.equals(clien)) {
@@ -329,8 +348,8 @@ class BaseDatos {
         }
 
     }
-    
-       public void DesactivarUsuario(Usuarios usuarios) {
+
+    public void DesactivarUsuario(Usuarios usuarios) {
 
         try {
             con = null;
@@ -339,7 +358,7 @@ class BaseDatos {
             Statement inserData = con.createStatement();
             System.out.println("correcto conexion insert");
 
-            String update = "update usuarios set estado = 0 where dni = " +usuarios.dni;
+            String update = "update usuarios set estado = 0 where dni = " + usuarios.dni;
             System.out.println("resultado--> " + update);
             int valor = inserData.executeUpdate(update);
             System.out.println("retorno > " + valor);
@@ -351,7 +370,6 @@ class BaseDatos {
 
     }
 
-       
     public void DesactivarClientes(Cliente clientes) {
 
         try {
@@ -372,10 +390,10 @@ class BaseDatos {
         }
 
     }
-    
-        public void DesactivarProveedor(Proveedores provee , int accion) {
 
-             String update ;
+    public void DesactivarProveedor(Proveedores provee, int accion) {
+
+        String update;
         try {
             con = null;
             Class.forName(DRIVE);
@@ -388,21 +406,20 @@ class BaseDatos {
             } else {
                 update = "update proveedor set estado = 0 where nit = " + provee.nit;
             }
-            
+
             System.out.println("resultado--> " + update);
             int valor = inserData.executeUpdate(update);
             System.out.println("retorno > " + valor);
-            if(valor ==1 ){
-            JOptionPane.showMessageDialog(null, "Porveedor bloqueado exitosamente");
+            if (valor == 1) {
+                JOptionPane.showMessageDialog(null, "Porveedor bloqueado exitosamente");
             }
-            
 
         } catch (Exception e) {
             System.out.println("error de conexion" + e);
         }
 
     }
-        
+
     public void insertarProveedor(Proveedores provee) {
 
         try {
@@ -417,37 +434,34 @@ class BaseDatos {
             System.out.println("resultado--> " + insert);
             int valor = inserData.executeUpdate(insert);
             System.out.println("retorno > " + valor);
-            if(valor == 1){
-            JOptionPane.showMessageDialog(null, "Proveefor creado exitosamente");
-            }else{
-             JOptionPane.showMessageDialog(null, "Error al crear Proveedor");
+            if (valor == 1) {
+                JOptionPane.showMessageDialog(null, "Proveefor creado exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al crear Proveedor");
             }
-            
 
         } catch (Exception e) {
             System.out.println("error de conexion" + e);
         }
 
     }
-    
-    public Venta ConsultarVenta(JTable tabla , DefaultTableModel modeloTabla ){
-        
+
+    public Venta ConsultarVenta(JTable tabla, DefaultTableModel modeloTabla) {
+
         Venta venta = new Venta();
         Cliente cliente;
         Productos prod;
-        
+
         try {
             con = null;
             Class.forName(DRIVE);
             con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
             Statement consulVenta = con.createStatement();
             System.out.println("correcto conexion Consulta Venta");
-            
-            
-             Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
             ResultSet rs = stmt.executeQuery("SELECT * FROM venta");//consulta a realizar
             System.out.println("consulta exitosa");
-            
 
             while (rs.next()) {
                 venta.id = rs.getInt("id");
@@ -456,13 +470,10 @@ class BaseDatos {
                 venta.cantidad = rs.getInt("cantidad");
                 venta.valorUnitario = rs.getFloat("valorUnitario");
                 venta.valorTotal = rs.getFloat("valorTotal");
-                venta.fecha = rs.getString("fecha");            
-                
-               cliente = ConsultarClientes("", venta.idCliente,2);
-               prod = ConsultarProductos("", venta.idProducto,2);
-               
-               
-                
+                venta.fecha = rs.getString("fecha");
+
+                cliente = ConsultarClientes("", venta.idCliente, 2);
+                prod = ConsultarProductos("", venta.idProducto, 2);
 
                 String[] info = new String[5];
                 info[0] = String.valueOf(cliente.nombre);
@@ -470,19 +481,18 @@ class BaseDatos {
                 info[2] = String.valueOf(venta.cantidad);
                 info[3] = String.valueOf(venta.valorTotal);
                 info[4] = venta.fecha;
-                modeloTabla.addRow(info); 
+                modeloTabla.addRow(info);
             }
             return venta;
-            
-            
+
         } catch (Exception e) {
             System.out.println("error de conexion" + e);
         }
         return venta;
-        
+
     }
-    
-        public void insertarProductos(Productos prod) {
+
+    public void insertarProductos(Productos prod) {
 
         try {
             con = null;
@@ -492,7 +502,7 @@ class BaseDatos {
             System.out.println("correcto conexion insert");
 
             String insert = "insert into producto (nombre, precioCompra, precioVenta , stock)"
-                    + "values ('" + prod.nombre + "', " + prod.precioCompra + ", " + prod.precioVenta + ", " + prod.stock +")";
+                    + "values ('" + prod.nombre + "', " + prod.precioCompra + ", " + prod.precioVenta + ", " + prod.stock + ")";
             System.out.println("resultado--> " + insert);
             int valor = inserData.executeUpdate(insert);
             System.out.println("retorno > " + valor);
@@ -503,8 +513,8 @@ class BaseDatos {
         }
 
     }
-        
-       public Proveedores ConsultarProveedores(JTable tabla , DefaultTableModel modeloTabla ){
+
+    public Proveedores ConsultarProveedores(JTable tabla, DefaultTableModel modeloTabla) {
         Proveedores proveed = new Proveedores();
         try {
             con = null;
@@ -512,12 +522,10 @@ class BaseDatos {
             con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
             Statement consulVenta = con.createStatement();
             System.out.println("correcto conexion Consulta Venta");
-            
-            
-             Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
             ResultSet rs = stmt.executeQuery("SELECT * FROM proveedor");//consulta a realizar
             System.out.println("consulta exitosa");
-            
 
             while (rs.next()) {
                 proveed.id = rs.getInt("id");
@@ -526,30 +534,28 @@ class BaseDatos {
                 proveed.tel = rs.getString("tel");
                 proveed.cel = rs.getString("cel");
                 proveed.mail = rs.getString("mail");
-                proveed.direccion = rs.getString("direccion");      
-                 proveed.estado = rs.getInt("estado");   
-                
+                proveed.direccion = rs.getString("direccion");
+                proveed.estado = rs.getInt("estado");
+
                 String[] info = new String[5];
                 info[0] = String.valueOf(proveed.nombre);
                 info[1] = String.valueOf(proveed.nit);
                 info[2] = String.valueOf(proveed.mail);
                 info[3] = String.valueOf(proveed.direccion);
                 info[4] = String.valueOf(proveed.estado);
-                
-                modeloTabla.addRow(info); 
+
+                modeloTabla.addRow(info);
             }
             return proveed;
-            
-            
+
         } catch (Exception e) {
             System.out.println("error de conexion" + e);
         }
         return proveed;
-        
+
     }
-       
-       
-       public Proveedores ConsultarProveeNit(String prov_nit ) {
+
+    public Proveedores ConsultarProveeNit(String prov_nit) {
 
         Proveedores proveed = new Proveedores();
 
@@ -577,9 +583,9 @@ class BaseDatos {
                 proveed.direccion = rs.getString("direccion");
                 proveed.estado = rs.getInt("estado");
 
-                    if (proveed.nit.equals(prov_nit)) {
-                        return proveed;
-                    }
+                if (proveed.nit.equals(prov_nit)) {
+                    return proveed;
+                }
             }
             return proveed;
 
@@ -590,10 +596,10 @@ class BaseDatos {
         }
         return proveed;
     }
-       
-        public void ActualizarProveedor(Proveedores provee) {
 
-             String update ;
+    public void ActualizarProveedor(Proveedores provee) {
+
+        String update;
         try {
             con = null;
             Class.forName(DRIVE);
@@ -601,15 +607,15 @@ class BaseDatos {
             Statement inserData = con.createStatement();
             System.out.println("correcto conexion insert");
 
-            update = "update proveedor set nombre = '"+provee.nombre +"', nit = '"+provee.nit+"', tel = '"+provee.tel+"', cel = '"+ provee.cel+"', mail = '"+provee.mail+"', direccion = '"+provee.direccion+"' where nit = " + provee.nit;
-            
+            update = "update proveedor set nombre = '" + provee.nombre + "', nit = '" + provee.nit + "', tel = '" + provee.tel + "', cel = '" + provee.cel + "', mail = '" + provee.mail + "', direccion = '" + provee.direccion + "' where nit = " + provee.nit;
+
             System.out.println("resultado--> " + update);
             int valor = inserData.executeUpdate(update);
             System.out.println("retorno > " + valor);
-            if(valor ==1 ){
-            JOptionPane.showMessageDialog(null, "Porveedor bloqueado exitosamente");
+            if (valor == 1) {
+                JOptionPane.showMessageDialog(null, "Porveedor bloqueado exitosamente");
             }
-            
+
 
         } catch (Exception e) {
             System.out.println("error de conexion" + e);

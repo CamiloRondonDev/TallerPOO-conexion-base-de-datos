@@ -5,6 +5,8 @@
  */
 package tallerpoo.conexion.base.de.datos;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import tallerpoo.conexion.base.de.datos.entidades.Productos;
 
 /**
  *
@@ -15,9 +17,23 @@ public class VistaBloqCliente extends javax.swing.JFrame {
     /**
      * Creates new form VistaBloqCliente
      */
+    DefaultTableModel modeloTablaCliente = new DefaultTableModel();
+    Cliente cliente = new Cliente();
+    BaseDatos bd = new BaseDatos();
+    int aux;
+
     public VistaBloqCliente() {
         initComponents();
          this.setLocationRelativeTo(null);//centrar ventana
+        modeloTablaCliente.addColumn("NOMBRE");
+        modeloTablaCliente.addColumn("DNI");
+        modeloTablaCliente.addColumn("CEL");
+        modeloTablaCliente.addColumn("MAIL");
+        modeloTablaCliente.addColumn("DIRECCION");
+        modeloTablaCliente.addColumn("ESTADO");
+        this.tabla_Clientes.setModel(modeloTablaCliente);
+        
+       cliente = bd.ConsultarClientesTabla(tabla_Clientes ,modeloTablaCliente);
     }
 
     /**
@@ -29,28 +45,26 @@ public class VistaBloqCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBloquearCliente = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        numCuduBloquearCliente_text = new javax.swing.JTextField();
         btnAtras = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_Clientes = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        cel_id = new javax.swing.JTextField();
+        nombre_id = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        correo_id = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        direccion_id = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        dni_id = new javax.swing.JTextField();
+        btn_limpiar = new javax.swing.JButton();
+        btn_actu_provee = new javax.swing.JButton();
+        btnAgregar_provee = new javax.swing.JButton();
+        btn_desac_provee1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnBloquearCliente.setText("BLOQUEAR");
-        btnBloquearCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBloquearClienteActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Digíta cédula de Cliente a bloquear");
-
-        numCuduBloquearCliente_text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numCuduBloquearCliente_textActionPerformed(evt);
-            }
-        });
 
         btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tallerpoo/conexion/base/de/datos/img/back.png"))); // NOI18N
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -59,66 +73,252 @@ public class VistaBloqCliente extends javax.swing.JFrame {
             }
         });
 
+        tabla_Clientes.setAutoCreateRowSorter(true);
+        tabla_Clientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "nombre", "dni", "cel", "mail", "direccion"
+            }
+        ));
+        tabla_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_ClientesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabla_Clientes);
+
+        jLabel2.setText("NOMBRE");
+
+        jLabel5.setText("CEL");
+
+        jLabel3.setText("CORREO");
+
+        jLabel4.setText("DIRECCION");
+
+        jLabel7.setText("DNI");
+
+        dni_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dni_idActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3)
+                    .addComponent(dni_id, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(nombre_id, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                    .addComponent(correo_id)
+                    .addComponent(cel_id)
+                    .addComponent(direccion_id))
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombre_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dni_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cel_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(correo_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(direccion_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
+        btn_actu_provee.setText("ACTUALIZAR");
+        btn_actu_provee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actu_proveeActionPerformed(evt);
+            }
+        });
+
+        btnAgregar_provee.setText("AGREGAR");
+        btnAgregar_provee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregar_proveeActionPerformed(evt);
+            }
+        });
+
+        btn_desac_provee1.setText("DESACTIVAR");
+        btn_desac_provee1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_desac_provee1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(numCuduBloquearCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(btnBloquearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 730, Short.MAX_VALUE)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(9, 9, 9)
+                                    .addComponent(btnAgregar_provee, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btn_actu_provee)
+                                    .addGap(32, 32, 32)
+                                    .addComponent(btn_desac_provee1)))
+                            .addGap(18, 18, 18)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(100, 100, 100)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(numCuduBloquearCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btnBloquearCliente)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(341, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(74, 74, 74)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btn_actu_provee, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAgregar_provee, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_desac_provee1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(18, 18, 18)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBloquearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBloquearClienteActionPerformed
-        // TODO add your handling code here:
-        Cliente cliente = new Cliente();
-        BaseDatos bd = new BaseDatos();
-        cliente.dni = numCuduBloquearCliente_text.getText();
-        if (cliente.dni.equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingresa DNI");
-        } else {
-            bd.DesactivarClientes(cliente);
-        }
-        
-
-    }//GEN-LAST:event_btnBloquearClienteActionPerformed
-
-    private void numCuduBloquearCliente_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuduBloquearCliente_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numCuduBloquearCliente_textActionPerformed
-
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
         dispose();//para cerrarla al ir a otra
+
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void tabla_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_ClientesMouseClicked
+        // TODO add your handling code here:
+        int rowIndex = tabla_Clientes.getSelectedRow();
+        String nit = tabla_Clientes.getValueAt(rowIndex, 1).toString() ;
+        cliente = bd.ConsultarClientesID(nit);
+        nombre_id.setText(cliente.nombre);
+        dni_id.setText(cliente.dni);
+        cel_id.setText(cliente.direccion);
+        correo_id.setText(cliente.mail);
+        direccion_id.setText(cliente.tel);
+
+        if(cliente.estado == 0){
+            btn_desac_provee1.setText("ACTIVAR");
+            aux = 1;
+        }else if (cliente.estado == 1){
+            btn_desac_provee1.setText("DESACTIVAR");
+            aux = 0;
+        }
+
+
+    }//GEN-LAST:event_tabla_ClientesMouseClicked
+
+    private void dni_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dni_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dni_idActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        dni_id.setEnabled(true);
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void btn_actu_proveeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actu_proveeActionPerformed
+        // TODO add your handling code here:
+//        prov.nombre = nombre_id.getText();
+//        prov.nit = dni_id.getText();
+//        prov.mail = correo_id.getText();
+//        prov.direccion = cel_id.getText();
+//        prov.tel = direccion_id.getText();
+//        prov.cel = celular_id.getText();
+//
+//        bd.ActualizarProveedor(prov);
+//        DefaultTableModel model = (DefaultTableModel) tabla_Clientes.getModel();
+//        model.setRowCount(0);
+//        bd.ConsultarProveedores(tabla_Clientes ,modeloTabla);
+    }//GEN-LAST:event_btn_actu_proveeActionPerformed
+
+    private void btnAgregar_proveeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_proveeActionPerformed
+        // TODO add your handling code here:
+        
+//        prov.nombre = nombre_id.getText();
+//        prov.nit = dni_id.getText();
+//        prov.mail = correo_id.getText();
+//        prov.direccion = cel_id.getText();
+//        prov.tel = direccion_id.getText();
+//        prov.cel = celular_id.getText();
+//
+//        bd.insertarProveedor(prov);
+//        DefaultTableModel model = (DefaultTableModel) tabla_Clientes.getModel();
+//        model.setRowCount(0);
+//        bd.ConsultarProveedores(tabla_Clientes ,modeloTabla);
+
+    }//GEN-LAST:event_btnAgregar_proveeActionPerformed
+
+    private void btn_desac_provee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desac_provee1ActionPerformed
+        // TODO add your handling code here:
+
+        System.out.println( btn_desac_provee1.getText());
+
+//        prov.nit = dni_id.getText();
+//        bd.DesactivarProveedor(prov, aux);
+//        DefaultTableModel model = (DefaultTableModel) tabla_Clientes.getModel();
+//        model.setRowCount(0);
+//        bd.ConsultarProveedores(tabla_Clientes ,modeloTabla);
+    }//GEN-LAST:event_btn_desac_provee1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,10 +355,32 @@ public class VistaBloqCliente extends javax.swing.JFrame {
         });
     }
 
+       public void limpiar(){
+        nombre_id.setText("");
+        dni_id.setText("");
+        cel_id.setText("");
+        correo_id.setText("");
+        direccion_id.setText("");
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar_provee;
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnBloquearCliente;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField numCuduBloquearCliente_text;
+    private javax.swing.JButton btn_actu_provee;
+    private javax.swing.JButton btn_desac_provee1;
+    private javax.swing.JButton btn_limpiar;
+    private javax.swing.JTextField cel_id;
+    private javax.swing.JTextField correo_id;
+    private javax.swing.JTextField direccion_id;
+    private javax.swing.JTextField dni_id;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField nombre_id;
+    private javax.swing.JTable tabla_Clientes;
     // End of variables declaration//GEN-END:variables
 }

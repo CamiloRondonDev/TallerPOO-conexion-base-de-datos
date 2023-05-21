@@ -326,6 +326,92 @@ class BaseDatos {
         return cliente;
 
     }
+     public Cliente ConsultarClientesID(String clien) {
+
+        Cliente cliente = new Cliente();
+
+        try {
+            con = null;
+            final String drive = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/poo";
+            String userBD = "root";
+            String password = "";
+
+            Class.forName(drive);
+            con = DriverManager.getConnection(url, userBD, password);
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM cliente");//consulta a realizar
+            //JOptionPane.showMessageDialog(null, "conexion correcta");
+            System.out.println("consulta exitosa");
+
+            while (rs.next()) {
+                cliente.id = rs.getInt("id");
+                cliente.nombre = rs.getString("nombre");
+                cliente.dni = rs.getString("dni");
+                cliente.tel = rs.getString("tel");
+                cliente.cel = rs.getString("cel");
+                cliente.mail = rs.getString("mail");
+                cliente.direccion = rs.getString("direccion");
+
+                if (cliente.dni.equals(clien)) {
+                    return cliente;
+                }
+
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "error de conexion" + e);
+
+        }
+
+        return cliente;
+
+    }
+    
+     public Cliente ConsultarClientesTabla(JTable tabla, DefaultTableModel modeloTabla) {
+        Cliente cliente = new Cliente();
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement consulVenta = con.createStatement();
+            System.out.println("correcto conexion Consulta Venta");
+
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM cliente");//consulta a realizar
+            System.out.println("consulta exitosa");
+
+            while (rs.next()) {
+                cliente.id = rs.getInt("id");
+                cliente.nombre = rs.getString("nombre");
+                cliente.dni = rs.getString("dni");
+                cliente.tel = rs.getString("tel");
+                cliente.cel = rs.getString("cel");
+                cliente.mail = rs.getString("mail");
+                cliente.direccion = rs.getString("direccion");
+                cliente.estado = rs.getInt("estado");
+
+
+                String[] info = new String[6];
+                info[0] = String.valueOf(cliente.nombre);
+                info[1] = String.valueOf(cliente.dni);
+                info[2] = String.valueOf(cliente.cel);
+                info[3] = String.valueOf(cliente.mail);
+                info[4] = String.valueOf(cliente.direccion);
+                info[5] = String.valueOf(cliente.estado);
+                
+
+                modeloTabla.addRow(info);
+            }
+            return cliente;
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+        return cliente;
+
+    }
 
     public void insertarClientes(Cliente cliente) {
 

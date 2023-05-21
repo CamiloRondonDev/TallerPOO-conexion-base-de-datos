@@ -109,7 +109,121 @@ class BaseDatos {
         return prod;
 
     }
+     public Productos ConsultarProductosNombre(String producto) {
 
+        Productos prod = new Productos();
+
+        try {
+            con = null;
+            final String drive = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/poo";
+            String userBD = "root";
+            String password = "";
+
+            Class.forName(drive);
+            con = DriverManager.getConnection(url, userBD, password);
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM producto");//consulta a realizar
+            //JOptionPane.showMessageDialog(null, "conexion correcta");
+            System.out.println("consulta exitosa");
+
+            while (rs.next()) {
+                prod.id = rs.getInt("id");
+                prod.nombre = rs.getString("nombre");
+                prod.precioCompra = rs.getLong("precioCompra");
+                prod.precioVenta = rs.getLong("precioVenta");
+                prod.stock = rs.getInt("stock");
+                prod.estado = rs.getInt("estado");
+
+                    if (prod.nombre.equals(producto)) {
+                        return prod;
+                    }
+                } 
+                
+            
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "error de conexion" + e);
+
+        }
+
+        return prod;
+
+    }
+    
+        public Productos ConsultarProductosTabla(JTable tabla , DefaultTableModel modeloTabla ){
+        Productos produc = new Productos();
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement consulVenta = con.createStatement();
+            System.out.println("correcto conexion Consulta Venta");
+            
+            
+             Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM producto");//consulta a realizar
+            System.out.println("consulta exitosa");
+            
+
+            while (rs.next()) {
+                produc.id = rs.getInt("id");
+                produc.nombre = rs.getString("nombre");
+                produc.precioCompra = rs.getFloat("precioCompra");
+                produc.precioVenta = rs.getFloat("precioVenta");
+                produc.stock = rs.getInt("stock");    
+                 produc.estado = rs.getInt("estado");   
+                
+                String[] info = new String[5];
+                info[0] = String.valueOf(produc.nombre);
+                info[1] = String.valueOf(produc.precioCompra);
+                info[2] = String.valueOf(produc.precioVenta);
+                info[3] = String.valueOf(produc.stock);
+                info[4] = String.valueOf(produc.estado);
+                
+                modeloTabla.addRow(info); 
+            }
+            return produc;
+            
+            
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+        return produc;
+        
+    }
+
+        
+         public void DesactivarProducto(Productos prod , int accion) {
+
+             String update ;
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            if (accion == 1) {
+                update = "update producto set estado = 1 where id = " + prod.id;
+            } else {
+                update = "update producto set estado = 0 where id = " + prod.id;
+            }
+            
+            System.out.println("resultado--> " + update);
+            int valor = inserData.executeUpdate(update);
+            System.out.println("retorno > " + valor);
+            if(valor ==1 ){
+            JOptionPane.showMessageDialog(null, "bloqueado exitosamente");
+            }
+            
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
     public int RegistrarVenta(Cliente cliente, Productos product, int cantidad, float total) {
 
         Productos prod;

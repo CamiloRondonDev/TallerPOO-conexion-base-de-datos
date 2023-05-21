@@ -108,6 +108,11 @@ public class VistaSuperUser extends javax.swing.JFrame {
         });
 
         jButton8.setText("PRODUCTOS");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("COMPRAS");
 
@@ -207,6 +212,12 @@ public class VistaSuperUser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_accion_realizarActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        VistaCrearProducto visCrea = new VistaCrearProducto();
+        visCrea.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * funcion para agregar imgagen en el label de forma dinámica al espacio
      * @param labelEjm label donde quiero que la imagen se adapte de forma dinamica
@@ -268,9 +279,6 @@ public class VistaSuperUser extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;

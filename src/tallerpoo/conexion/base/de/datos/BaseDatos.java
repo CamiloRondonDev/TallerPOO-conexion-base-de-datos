@@ -427,5 +427,47 @@ class BaseDatos {
         return proveed;
         
     }
+       
+       
+       public Proveedores ConsultarProveeNit(String prov_nit ) {
 
+        Proveedores proveed = new Proveedores();
+
+        try {
+            con = null;
+            final String drive = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/poo";
+            String userBD = "root";
+            String password = "";
+
+            Class.forName(drive);
+            con = DriverManager.getConnection(url, userBD, password);
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM proveedor");//consulta a realizar
+            //JOptionPane.showMessageDialog(null, "conexion correcta");
+            System.out.println("consulta exitosa");
+
+            while (rs.next()) {
+                proveed.id = rs.getInt("id");
+                proveed.nombre = rs.getString("nombre");
+                proveed.nit = rs.getString("nit");
+                proveed.tel = rs.getString("tel");
+                proveed.cel = rs.getString("cel");
+                proveed.mail = rs.getString("mail");
+                proveed.direccion = rs.getString("direccion");
+                proveed.id = rs.getInt("estado");
+
+                    if (proveed.nit.equals(prov_nit)) {
+                        return proveed;
+                    }
+
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "error de conexion" + e);
+
+        }
+        return proveed;
+    }
 }

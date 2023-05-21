@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VistaBloqProveedor extends javax.swing.JFrame {
     BaseDatos bd = new BaseDatos();
+    Proveedores prov;
 
     /**
      * Creates new form VistaBloqProveedor
@@ -237,6 +238,14 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
         int rowIndex = tabla_proveedores.getSelectedRow();
         String nit = tabla_proveedores.getValueAt(rowIndex, 1).toString();
         System.out.println(nit+ " _nit_");
+        prov = bd.ConsultarProveeNit(nit);
+        nombre_id.setText(prov.nombre);
+        nit_id.setText(prov.nit);
+        direccion_id.setText(prov.direccion);
+        correo_id.setText(prov.mail);
+        telefono_id.setText(prov.tel);
+        celular_id.setText(prov.cel);
+
         
     }//GEN-LAST:event_tabla_proveedoresMouseClicked
 

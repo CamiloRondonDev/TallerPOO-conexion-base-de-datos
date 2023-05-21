@@ -100,6 +100,12 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
 
         jLabel7.setText("NIT");
 
+        nit_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nit_idActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -246,7 +252,6 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
         // TODO add your handling code here:
         int rowIndex = tabla_proveedores.getSelectedRow();
         String nit = tabla_proveedores.getValueAt(rowIndex, 1).toString();
-        System.out.println(nit+ " _nit_");
         prov = bd.ConsultarProveeNit(nit);
         nombre_id.setText(prov.nombre);
         nit_id.setText(prov.nit);
@@ -262,6 +267,8 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
          btn_desac_provee1.setText("DESACTIVAR");
          aux = 0;
         }
+        
+        nit_id.setEnabled(false);
 
         
     }//GEN-LAST:event_tabla_proveedoresMouseClicked
@@ -276,15 +283,6 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
         prov.tel = telefono_id.getText();
         prov.cel = celular_id.getText();
 
-        System.out.println(prov.nombre);
-        System.out.println(prov.nit);
-        System.out.println(prov.mail);
-        System.out.println(prov.direccion);
-        System.out.println(prov.tel);
-        System.out.println(prov.cel);
-        
-
-
         bd.insertarProveedor(prov);
         DefaultTableModel model = (DefaultTableModel) tabla_proveedores.getModel();
         model.setRowCount(0);
@@ -297,6 +295,7 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         // TODO add your handling code here:
          limpiar();
+         nit_id.setEnabled(true);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void btn_desac_provee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desac_provee1ActionPerformed
@@ -314,8 +313,22 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
 
     private void btn_actu_proveeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actu_proveeActionPerformed
         // TODO add your handling code here:
-       
+        prov.nombre = nombre_id.getText();
+        prov.nit = nit_id.getText();
+        prov.mail = correo_id.getText();
+        prov.direccion = direccion_id.getText();
+        prov.tel = telefono_id.getText();
+        prov.cel = celular_id.getText();
+        
+       bd.ActualizarProveedor(prov);
+       DefaultTableModel model = (DefaultTableModel) tabla_proveedores.getModel();
+        model.setRowCount(0);
+        bd.ConsultarProveedores(tabla_proveedores ,modeloTabla);
     }//GEN-LAST:event_btn_actu_proveeActionPerformed
+
+    private void nit_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nit_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nit_idActionPerformed
 
     /**
      * @param args the command line arguments

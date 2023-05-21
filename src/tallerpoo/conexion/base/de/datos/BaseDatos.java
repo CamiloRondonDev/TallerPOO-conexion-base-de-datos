@@ -477,7 +477,7 @@ class BaseDatos {
         return proveed;
     }
        
-              public void ActualizarProveedor(Proveedores provee) {
+        public void ActualizarProveedor(Proveedores provee) {
 
              String update ;
         try {
@@ -487,7 +487,7 @@ class BaseDatos {
             Statement inserData = con.createStatement();
             System.out.println("correcto conexion insert");
 
-                //update = "update proveedor set estado = 0, nombre = "++ "  where nit = " + provee.nit;
+            update = "update proveedor set nombre = '"+provee.nombre +"', nit = '"+provee.nit+"', tel = '"+provee.tel+"', cel = '"+ provee.cel+"', mail = '"+provee.mail+"', direccion = '"+provee.direccion+"' where nit = " + provee.nit;
             
             System.out.println("resultado--> " + update);
             int valor = inserData.executeUpdate(update);

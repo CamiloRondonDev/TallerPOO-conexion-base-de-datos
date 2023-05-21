@@ -5,8 +5,7 @@
         <group>
             <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/BaseDatos.java</file>
             <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/Vista/VistaBloqProveedor.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/Vista/VistaVendedor.java</file>
-            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/Vista/VistaVerRegistros.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/TallerPOO%20conexion%20base%20de%20datos/src/tallerpoo/conexion/base/de/datos/Vista/VistaSuperUser.java</file>
         </group>
     </open-files>
 </project-private>

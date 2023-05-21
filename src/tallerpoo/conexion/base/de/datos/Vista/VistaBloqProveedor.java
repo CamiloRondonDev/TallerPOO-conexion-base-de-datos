@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VistaBloqProveedor extends javax.swing.JFrame {
     BaseDatos bd = new BaseDatos();
-    Proveedores prov;
+    Proveedores prov = new Proveedores();
 
     /**
      * Creates new form VistaBloqProveedor
@@ -24,8 +24,8 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
         modeloTabla.addColumn("DIRECCION");
         modeloTabla.addColumn("ESTADO");
         this.tabla_proveedores.setModel(modeloTabla);
-
-        bd.ConsultarProveedores(tabla_proveedores ,modeloTabla );
+        
+        bd.ConsultarProveedores(tabla_proveedores ,modeloTabla);
         
     }
 
@@ -38,8 +38,6 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        numCuduBloquearProvee_text = new javax.swing.JTextField();
-        btnBloquearProvee = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_proveedores = new javax.swing.JTable();
@@ -56,21 +54,12 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
         celular_id = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         nit_id = new javax.swing.JTextField();
+        btn_limpiar = new javax.swing.JButton();
+        btn_actu_provee = new javax.swing.JButton();
+        btnAgregar_provee = new javax.swing.JButton();
+        btn_desac_provee1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        numCuduBloquearProvee_text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                numCuduBloquearProvee_textActionPerformed(evt);
-            }
-        });
-
-        btnBloquearProvee.setText("BLOQUEAR");
-        btnBloquearProvee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBloquearProveeActionPerformed(evt);
-            }
-        });
 
         btnAtras.setText("<-- atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -163,8 +152,36 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telefono_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(celular_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
+        btn_actu_provee.setText("ACTUALIZAR");
+        btn_actu_provee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actu_proveeActionPerformed(evt);
+            }
+        });
+
+        btnAgregar_provee.setText("AGREGAR");
+        btnAgregar_provee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregar_proveeActionPerformed(evt);
+            }
+        });
+
+        btn_desac_provee1.setText("DESACTIVAR");
+        btn_desac_provee1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_desac_provee1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,16 +195,22 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
                         .addComponent(btnAtras))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addComponent(btnBloquearProvee, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(numCuduBloquearProvee_text, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(9, 9, 9)
+                                .addComponent(btnAgregar_provee, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_actu_provee)
+                                .addGap(32, 32, 32)
+                                .addComponent(btn_desac_provee1)))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,38 +218,23 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(numCuduBloquearProvee_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBloquearProvee)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_actu_provee, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregar_provee, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_desac_provee1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBloquearProveeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBloquearProveeActionPerformed
-        // TODO add your handling code here:
-        Proveedores prov = new Proveedores();
-        BaseDatos bd = new BaseDatos();
-        prov.nit = numCuduBloquearProvee_text.getText();
-        if(prov.nit.equals("")){
-          JOptionPane.showMessageDialog(null, "llena todos los espacios");
-        }else{
-          bd.DesactivarProveedor(prov);
-        }
-        
-
-    }//GEN-LAST:event_btnBloquearProveeActionPerformed
-
-    private void numCuduBloquearProvee_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuduBloquearProvee_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numCuduBloquearProvee_textActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
@@ -248,6 +256,53 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_tabla_proveedoresMouseClicked
+
+    private void btnAgregar_proveeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_proveeActionPerformed
+        // TODO add your handling code here:
+        //limpiar();
+        prov.nombre = nombre_id.getText();
+        prov.nit = nit_id.getText();
+        prov.mail = correo_id.getText();
+        prov.direccion = direccion_id.getText();
+        prov.tel = telefono_id.getText();
+        prov.cel = celular_id.getText();
+
+        System.out.println(prov.nombre);
+        System.out.println(prov.nit);
+        System.out.println(prov.mail);
+        System.out.println(prov.direccion);
+        System.out.println(prov.tel);
+        System.out.println(prov.cel);
+        
+
+
+        bd.insertarProveedor(prov);
+        DefaultTableModel model = (DefaultTableModel) tabla_proveedores.getModel();
+        model.setRowCount(0);
+        bd.ConsultarProveedores(tabla_proveedores ,modeloTabla);
+       
+        
+        
+    }//GEN-LAST:event_btnAgregar_proveeActionPerformed
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        // TODO add your handling code here:
+         limpiar();
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void btn_desac_provee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desac_provee1ActionPerformed
+        // TODO add your handling code here:
+        prov.nit = nit_id.getText();
+        bd.DesactivarProveedor(prov);
+        DefaultTableModel model = (DefaultTableModel) tabla_proveedores.getModel();
+        model.setRowCount(0);
+        bd.ConsultarProveedores(tabla_proveedores ,modeloTabla);
+    }//GEN-LAST:event_btn_desac_provee1ActionPerformed
+
+    private void btn_actu_proveeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actu_proveeActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_btn_actu_proveeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,9 +339,23 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
         });
     }
     
+    public void limpiar(){
+        nombre_id.setText("");
+        nit_id.setText("");
+        direccion_id.setText("");
+        correo_id.setText("");
+        telefono_id.setText("");
+        celular_id.setText("");
+    }
+
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar_provee;
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnBloquearProvee;
+    private javax.swing.JButton btn_actu_provee;
+    private javax.swing.JButton btn_desac_provee1;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JTextField celular_id;
     private javax.swing.JTextField correo_id;
     private javax.swing.JTextField direccion_id;
@@ -300,7 +369,6 @@ public class VistaBloqProveedor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nit_id;
     private javax.swing.JTextField nombre_id;
-    private javax.swing.JTextField numCuduBloquearProvee_text;
     private javax.swing.JTable tabla_proveedores;
     private javax.swing.JTextField telefono_id;
     // End of variables declaration//GEN-END:variables

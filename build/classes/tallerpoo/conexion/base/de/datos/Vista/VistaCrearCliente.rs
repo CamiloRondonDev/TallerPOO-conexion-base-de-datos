@@ -1,0 +1,9 @@
+tallerpoo.conexion.base.de.datos.VistaCrearCliente
+tallerpoo.conexion.base.de.datos.VistaCrearCliente$1
+tallerpoo.conexion.base.de.datos.VistaCrearCliente$7
+tallerpoo.conexion.base.de.datos.VistaCrearCliente$6
+tallerpoo.conexion.base.de.datos.VistaCrearCliente$8
+tallerpoo.conexion.base.de.datos.VistaCrearCliente$3
+tallerpoo.conexion.base.de.datos.VistaCrearCliente$2
+tallerpoo.conexion.base.de.datos.VistaCrearCliente$5
+tallerpoo.conexion.base.de.datos.VistaCrearCliente$4

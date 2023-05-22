@@ -122,6 +122,11 @@ public class VistaSuperUser extends javax.swing.JFrame {
         jButton10.setText("COMPRAS");
 
         jButton9.setText("VENTAS");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -228,6 +233,12 @@ public class VistaSuperUser extends javax.swing.JFrame {
         VistaBloqCliente vistBloq = new VistaBloqCliente();
         vistBloq.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        VistaVerRegistros vVerRegistros = new VistaVerRegistros();
+        vVerRegistros.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * funcion para agregar imgagen en el label de forma dinámica al espacio

@@ -59,10 +59,12 @@ public class VistaBloqCliente extends javax.swing.JFrame {
         direccion_id = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         dni_id = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        tel_id = new javax.swing.JTextField();
         btn_limpiar = new javax.swing.JButton();
-        btn_actu_provee = new javax.swing.JButton();
-        btnAgregar_provee = new javax.swing.JButton();
-        btn_desac_provee1 = new javax.swing.JButton();
+        btn_actu_cliente = new javax.swing.JButton();
+        btnAgregar_cliente = new javax.swing.JButton();
+        btn_desac_cliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,24 +110,35 @@ public class VistaBloqCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("TEL");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addComponent(dni_id, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(nombre_id, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                    .addComponent(correo_id)
-                    .addComponent(cel_id)
-                    .addComponent(direccion_id))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel7)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1)
+                            .addGap(25, 25, 25))
+                        .addComponent(jLabel4)
+                        .addComponent(nombre_id, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                        .addComponent(correo_id)
+                        .addComponent(direccion_id))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cel_id, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dni_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addComponent(tel_id, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,10 +152,14 @@ public class VistaBloqCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dni_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cel_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cel_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tel_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(correo_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,24 +177,24 @@ public class VistaBloqCliente extends javax.swing.JFrame {
             }
         });
 
-        btn_actu_provee.setText("ACTUALIZAR");
-        btn_actu_provee.addActionListener(new java.awt.event.ActionListener() {
+        btn_actu_cliente.setText("ACTUALIZAR");
+        btn_actu_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actu_proveeActionPerformed(evt);
+                btn_actu_clienteActionPerformed(evt);
             }
         });
 
-        btnAgregar_provee.setText("AGREGAR");
-        btnAgregar_provee.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar_cliente.setText("AGREGAR");
+        btnAgregar_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar_proveeActionPerformed(evt);
+                btnAgregar_clienteActionPerformed(evt);
             }
         });
 
-        btn_desac_provee1.setText("DESACTIVAR");
-        btn_desac_provee1.addActionListener(new java.awt.event.ActionListener() {
+        btn_desac_cliente.setText("DESACTIVAR");
+        btn_desac_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_desac_provee1ActionPerformed(evt);
+                btn_desac_clienteActionPerformed(evt);
             }
         });
 
@@ -185,26 +202,28 @@ public class VistaBloqCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 730, Short.MAX_VALUE)
-                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 497, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(9, 9, 9)
-                                    .addComponent(btnAgregar_provee, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btn_actu_provee)
-                                    .addGap(32, 32, 32)
-                                    .addComponent(btn_desac_provee1)))
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(btnAgregar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_actu_cliente)
+                                .addGap(32, 32, 32)
+                                .addComponent(btn_desac_cliente)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,21 +235,19 @@ public class VistaBloqCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(28, 28, 28)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(74, 74, 74)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btn_actu_provee, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAgregar_provee, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_desac_provee1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(18, 18, 18)
+                    .addGap(39, 39, 39)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(74, 74, 74)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_actu_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregar_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_desac_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(27, 27, 27)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -247,19 +264,20 @@ public class VistaBloqCliente extends javax.swing.JFrame {
     private void tabla_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_ClientesMouseClicked
         // TODO add your handling code here:
         int rowIndex = tabla_Clientes.getSelectedRow();
-        String nit = tabla_Clientes.getValueAt(rowIndex, 1).toString() ;
-        cliente = bd.ConsultarClientesID(nit);
+        String dni = tabla_Clientes.getValueAt(rowIndex, 1).toString() ;
+        cliente = bd.ConsultarClientesID(dni);
         nombre_id.setText(cliente.nombre);
         dni_id.setText(cliente.dni);
-        cel_id.setText(cliente.direccion);
+        cel_id.setText(cliente.cel);
         correo_id.setText(cliente.mail);
-        direccion_id.setText(cliente.tel);
+        direccion_id.setText(cliente.direccion);
+        tel_id.setText(cliente.tel);
 
         if(cliente.estado == 0){
-            btn_desac_provee1.setText("ACTIVAR");
+            btn_desac_cliente.setText("ACTIVAR");
             aux = 1;
         }else if (cliente.estado == 1){
-            btn_desac_provee1.setText("DESACTIVAR");
+            btn_desac_cliente.setText("DESACTIVAR");
             aux = 0;
         }
 
@@ -276,49 +294,49 @@ public class VistaBloqCliente extends javax.swing.JFrame {
         dni_id.setEnabled(true);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
-    private void btn_actu_proveeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actu_proveeActionPerformed
+    private void btn_actu_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actu_clienteActionPerformed
         // TODO add your handling code here:
-//        prov.nombre = nombre_id.getText();
-//        prov.nit = dni_id.getText();
-//        prov.mail = correo_id.getText();
-//        prov.direccion = cel_id.getText();
-//        prov.tel = direccion_id.getText();
-//        prov.cel = celular_id.getText();
-//
-//        bd.ActualizarProveedor(prov);
-//        DefaultTableModel model = (DefaultTableModel) tabla_Clientes.getModel();
-//        model.setRowCount(0);
-//        bd.ConsultarProveedores(tabla_Clientes ,modeloTabla);
-    }//GEN-LAST:event_btn_actu_proveeActionPerformed
+        cliente.nombre = nombre_id.getText();
+        cliente.dni = dni_id.getText();
+        cliente.mail = correo_id.getText();
+        cliente.direccion = direccion_id.getText();
+        cliente.tel = tel_id.getText();
+        cliente.cel = cel_id.getText();
 
-    private void btnAgregar_proveeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_proveeActionPerformed
+        bd.ActualizarCliente(cliente);
+        DefaultTableModel model = (DefaultTableModel) tabla_Clientes.getModel();
+        model.setRowCount(0);
+        cliente = bd.ConsultarClientesTabla(tabla_Clientes ,modeloTablaCliente);
+    }//GEN-LAST:event_btn_actu_clienteActionPerformed
+
+    private void btnAgregar_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_clienteActionPerformed
         // TODO add your handling code here:
         
-//        prov.nombre = nombre_id.getText();
-//        prov.nit = dni_id.getText();
-//        prov.mail = correo_id.getText();
-//        prov.direccion = cel_id.getText();
-//        prov.tel = direccion_id.getText();
-//        prov.cel = celular_id.getText();
-//
-//        bd.insertarProveedor(prov);
-//        DefaultTableModel model = (DefaultTableModel) tabla_Clientes.getModel();
-//        model.setRowCount(0);
-//        bd.ConsultarProveedores(tabla_Clientes ,modeloTabla);
+        cliente.nombre = nombre_id.getText();
+        cliente.dni = dni_id.getText();
+        cliente.mail = correo_id.getText();
+        cliente.direccion = direccion_id.getText();
+        cliente.tel = tel_id.getText();
+        cliente.cel = cel_id.getText();
 
-    }//GEN-LAST:event_btnAgregar_proveeActionPerformed
+        bd.insertarClientes(cliente);
+        DefaultTableModel model = (DefaultTableModel) tabla_Clientes.getModel();
+        model.setRowCount(0);
+        cliente = bd.ConsultarClientesTabla(tabla_Clientes ,modeloTablaCliente);
 
-    private void btn_desac_provee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desac_provee1ActionPerformed
+    }//GEN-LAST:event_btnAgregar_clienteActionPerformed
+
+    private void btn_desac_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desac_clienteActionPerformed
         // TODO add your handling code here:
 
-        System.out.println( btn_desac_provee1.getText());
+        System.out.println( btn_desac_cliente.getText());
 
-//        prov.nit = dni_id.getText();
-//        bd.DesactivarProveedor(prov, aux);
-//        DefaultTableModel model = (DefaultTableModel) tabla_Clientes.getModel();
-//        model.setRowCount(0);
-//        bd.ConsultarProveedores(tabla_Clientes ,modeloTabla);
-    }//GEN-LAST:event_btn_desac_provee1ActionPerformed
+      //  cliente.id =  dni_id.getText();
+        bd.DesactivarClientes(cliente, aux);
+        DefaultTableModel model = (DefaultTableModel) tabla_Clientes.getModel();
+        model.setRowCount(0);
+        cliente = bd.ConsultarClientesTabla(tabla_Clientes ,modeloTablaCliente);
+    }//GEN-LAST:event_btn_desac_clienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,18 +379,20 @@ public class VistaBloqCliente extends javax.swing.JFrame {
         cel_id.setText("");
         correo_id.setText("");
         direccion_id.setText("");
+        tel_id.setText("");
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar_provee;
+    private javax.swing.JButton btnAgregar_cliente;
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btn_actu_provee;
-    private javax.swing.JButton btn_desac_provee1;
+    private javax.swing.JButton btn_actu_cliente;
+    private javax.swing.JButton btn_desac_cliente;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JTextField cel_id;
     private javax.swing.JTextField correo_id;
     private javax.swing.JTextField direccion_id;
     private javax.swing.JTextField dni_id;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -382,5 +402,6 @@ public class VistaBloqCliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombre_id;
     private javax.swing.JTable tabla_Clientes;
+    private javax.swing.JTextField tel_id;
     // End of variables declaration//GEN-END:variables
 }

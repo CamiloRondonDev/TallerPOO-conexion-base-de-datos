@@ -352,6 +352,7 @@ class BaseDatos {
                 cliente.cel = rs.getString("cel");
                 cliente.mail = rs.getString("mail");
                 cliente.direccion = rs.getString("direccion");
+                cliente.estado = rs.getInt("estado");
 
                 if (cliente.dni.equals(clien)) {
                     return cliente;
@@ -434,6 +435,31 @@ class BaseDatos {
         }
 
     }
+        public void ActualizarCliente(Cliente clientes) {
+
+        String update;
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            update = "update cliente set nombre = '" + clientes.nombre + "', dni = '" + clientes.dni + "', tel = '" + clientes.tel + "', cel = '" + clientes.cel + "', mail = '" + clientes.mail + "', direccion = '" + clientes.direccion + "' where id = " + clientes.id;
+
+            System.out.println("resultado--> " + update);
+            int valor = inserData.executeUpdate(update);
+            System.out.println("retorno > " + valor);
+            if (valor == 1) {
+                JOptionPane.showMessageDialog(null, "Porveedor bloqueado exitosamente");
+            }
+
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
 
     public void DesactivarUsuario(Usuarios usuarios) {
 
@@ -456,7 +482,8 @@ class BaseDatos {
 
     }
 
-    public void DesactivarClientes(Cliente clientes) {
+    public void DesactivarClientes(Cliente clientes, int accion) {
+        String update;
 
         try {
             con = null;
@@ -465,11 +492,16 @@ class BaseDatos {
             Statement inserData = con.createStatement();
             System.out.println("correcto conexion insert");
 
-            String update = "update cliente set estado = 0 where dni = " + clientes.dni;
+            if(accion == 1){
+             update = "update cliente set estado = 1 where id = " + clientes.id;
+            }else{
+             update = "update cliente set estado = 0 where id = " + clientes.id;
+            }
+            
             System.out.println("resultado--> " + update);
             int valor = inserData.executeUpdate(update);
             System.out.println("retorno > " + valor);
-            JOptionPane.showMessageDialog(null, "Usuario bloqueado exitosamente");
+            JOptionPane.showMessageDialog(null, "exito");
 
         } catch (Exception e) {
             System.out.println("error de conexion" + e);

@@ -97,6 +97,11 @@ public class VistaSuperUser extends javax.swing.JFrame {
         });
 
         jButton7.setText("USUARIOS");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("CLIENTES");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -249,6 +254,12 @@ public class VistaSuperUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        VistaCrearUsuarios visCreaUser = new VistaCrearUsuarios();
+        visCreaUser.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * funcion para agregar imgagen en el label de forma dinámica al espacio

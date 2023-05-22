@@ -100,7 +100,7 @@ public class VistaBloqUsuario extends javax.swing.JFrame {
         if (user.dni.equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese DNI");
         } else {
-            bd.DesactivarUsuario(user);
+            //bd.DesactivarUsuario(user);
             dispose();//para cerrarla al ir a otra 
         }
         

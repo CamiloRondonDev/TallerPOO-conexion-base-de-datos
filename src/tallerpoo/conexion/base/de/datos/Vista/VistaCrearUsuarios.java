@@ -5,10 +5,10 @@
  */
 package tallerpoo.conexion.base.de.datos;
 import static javafx.application.Platform.exit;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tallerpoo.conexion.base.de.datos.BaseDatos;
 import tallerpoo.conexion.base.de.datos.entidades.Productos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +19,7 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
       BaseDatos bd = new BaseDatos();
       Usuarios user = new Usuarios();
       DefaultTableModel modeloTablaCliente = new DefaultTableModel();
+      int aux;
 
     /**
      * Creates new form VistaCrearProducto
@@ -35,6 +36,9 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
         this.tabla_usuarios_id.setModel(modeloTablaCliente);
         
        user = bd.ConsultarUsuarioTabla(tabla_usuarios_id ,modeloTablaCliente);
+       tipoUser_id.removeAllItems();
+        tipoUser_id.addItem("Vendedor");
+        tipoUser_id.addItem("Admin");
     }
 
     /**
@@ -53,18 +57,19 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        btnCrearCliente = new javax.swing.JButton();
         nomCliente_text = new javax.swing.JTextField();
         dniCliente_text = new javax.swing.JTextField();
-        direccCliente_text = new javax.swing.JTextField();
         telCliente_text = new javax.swing.JTextField();
         celCliente_text = new javax.swing.JTextField();
         tipoUser_id = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_usuarios_id = new javax.swing.JTable();
+        btnActualizar = new javax.swing.JButton();
+        btn_desactivar = new javax.swing.JButton();
+        btnCrearCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,15 +89,6 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
 
         jLabel6.setText("Celular");
 
-        jLabel7.setText("Dirección");
-
-        btnCrearCliente.setText("CREAR USUARIO");
-        btnCrearCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearClienteActionPerformed(evt);
-            }
-        });
-
         nomCliente_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomCliente_textActionPerformed(evt);
@@ -105,21 +101,26 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
             }
         });
 
-        direccCliente_text.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                direccCliente_textActionPerformed(evt);
-            }
-        });
-
         telCliente_text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 telCliente_textActionPerformed(evt);
             }
         });
 
-        tipoUser_id.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Vendedor", "Admin" }));
+        tipoUser_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoUser_idActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("ROL");
+
+        jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,29 +129,27 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mailCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dniCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(nomCliente_text, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(direccCliente_text, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mailCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5)
-                            .addComponent(telCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(celCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telCliente_text, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                            .addComponent(celCliente_text, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
                             .addComponent(jLabel6)
                             .addComponent(jLabel3)
-                            .addComponent(tipoUser_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tipoUser_id, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
-                .addComponent(btnCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,19 +172,15 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
                     .addComponent(celCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(direccCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tipoUser_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mailCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(btnCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                    .addComponent(tipoUser_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mailCliente_text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(34, 34, 34))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -202,23 +197,66 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
             new String [] {
                 "Nombre", "DNI", "cel", "mail", "Rol"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabla_usuarios_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_usuarios_idMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla_usuarios_id);
+
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        btn_desactivar.setText("Desactivar");
+        btn_desactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_desactivarActionPerformed(evt);
+            }
+        });
+
+        btnCrearCliente.setText("CREAR USUARIO");
+        btnCrearCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE))
+                        .addGap(39, 39, 39)
+                        .addComponent(btnCrearCliente)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(btn_desactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(392, 392, 392)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(392, 392, 392)
+                                .addComponent(jLabel1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
@@ -229,9 +267,14 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnActualizar)
+                    .addComponent(btnCrearCliente)
+                    .addComponent(btn_desactivar))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -256,7 +299,6 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
          System.out.println(user.id_Rol);
         
         user.nombre = nomCliente_text.getText();
-        //user.id_Rol = 
         user.dni = dniCliente_text.getText();
         user.mail = mailCliente_text.getText();
         user.tel = telCliente_text.getText();
@@ -278,10 +320,6 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dniCliente_textActionPerformed
 
-    private void direccCliente_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccCliente_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_direccCliente_textActionPerformed
-
     private void telCliente_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telCliente_textActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_telCliente_textActionPerformed
@@ -289,6 +327,82 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
     private void mailCliente_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailCliente_textActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mailCliente_textActionPerformed
+
+    private void tabla_usuarios_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_usuarios_idMouseClicked
+        // TODO add your handling code here:
+        int rowIndex = tabla_usuarios_id.getSelectedRow();
+        String dni = tabla_usuarios_id.getValueAt(rowIndex, 1).toString();
+        user = bd.ConsultarUsuariosID(dni);
+        nomCliente_text.setText(user.nombre);
+        dniCliente_text.setText(user.dni);
+        celCliente_text.setText(user.cel);
+        mailCliente_text.setText(user.mail);
+        telCliente_text.setText(user.tel);
+        
+        //tipoUser_id.removeAllItems();
+        if(user.id_Rol == 5){
+           tipoUser_id.removeAllItems();
+           tipoUser_id.addItem("Admin");
+           tipoUser_id.addItem("Vendedor");
+        }else if(user.id_Rol == 6){
+            tipoUser_id.removeAllItems();
+           tipoUser_id.addItem("Vendedor");
+            tipoUser_id.addItem("Admin");
+        }else{
+            tipoUser_id.removeAllItems();
+            tipoUser_id.addItem("Super-Admin");
+        }
+          
+        if(user.estado == 0){
+            btn_desactivar.setText("ACTIVAR");
+            aux = 1;
+        }else if (user.estado == 1){
+            btn_desactivar.setText("DESACTIVAR");
+            aux = 0;
+        }
+    }//GEN-LAST:event_tabla_usuarios_idMouseClicked
+
+    private void tipoUser_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoUser_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoUser_idActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Limpiar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        user.nombre = nomCliente_text.getText();
+        user.dni = dniCliente_text.getText();
+        user.mail = mailCliente_text.getText();
+        user.tel = telCliente_text.getText();
+        user.cel = celCliente_text.getText();
+        String tipoUsuer = tipoUser_id.getSelectedItem().toString();
+        if(tipoUsuer.equals("Admin")){
+            user.id_Rol = 5;
+        }else if(tipoUsuer.equals("Vendedor")){
+            user.id_Rol = 6;
+        }else{
+            JOptionPane.showMessageDialog(null, "Super-Admin no se puede actualizar");
+          return;
+        }
+                
+
+        bd.ActualizarUsuario(user);
+        DefaultTableModel model = (DefaultTableModel) tabla_usuarios_id.getModel();
+        model.setRowCount(0);
+        bd.ConsultarUsuarioTabla(tabla_usuarios_id, modeloTablaCliente);
+
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btn_desactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desactivarActionPerformed
+        // TODO add your handling code here:    
+        bd.DesactivarUsuario(user, aux);
+        DefaultTableModel model = (DefaultTableModel) tabla_usuarios_id.getModel();
+        model.setRowCount(0);
+        bd.ConsultarUsuarioTabla(tabla_usuarios_id, modeloTablaCliente);
+    }//GEN-LAST:event_btn_desactivarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,19 +439,32 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void Limpiar(){
+    
+        nomCliente_text.setText("");
+        dniCliente_text.setText("");
+        celCliente_text.setText("");
+        mailCliente_text.setText("");
+        telCliente_text.setText("");
+        tipoUser_id.removeAllItems();
+        tipoUser_id.addItem("Vendedor");
+        tipoUser_id.addItem("Admin");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCrearCliente;
+    private javax.swing.JButton btn_desactivar;
     private javax.swing.JTextField celCliente_text;
-    private javax.swing.JTextField direccCliente_text;
     private javax.swing.JTextField dniCliente_text;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

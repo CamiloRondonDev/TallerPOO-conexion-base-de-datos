@@ -264,7 +264,7 @@ public class VistaBloqCliente extends javax.swing.JFrame {
     private void tabla_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_ClientesMouseClicked
         // TODO add your handling code here:
         int rowIndex = tabla_Clientes.getSelectedRow();
-        String dni = tabla_Clientes.getValueAt(rowIndex, 1).toString() ;
+        String dni = tabla_Clientes.getValueAt(rowIndex, 1).toString();
         cliente = bd.ConsultarClientesID(dni);
         nombre_id.setText(cliente.nombre);
         dni_id.setText(cliente.dni);

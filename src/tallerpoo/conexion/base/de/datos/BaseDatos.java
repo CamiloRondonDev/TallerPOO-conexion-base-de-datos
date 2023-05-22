@@ -107,7 +107,77 @@ class BaseDatos {
         return user;
 
     }
+      public Usuarios ConsultarUsuariosID(String clien) {
 
+        Usuarios user = new Usuarios();
+
+        try {
+            con = null;
+            final String drive = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/poo";
+            String userBD = "root";
+            String password = "";
+
+            Class.forName(drive);
+            con = DriverManager.getConnection(url, userBD, password);
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM usuarios");//consulta a realizar
+            //JOptionPane.showMessageDialog(null, "conexion correcta");
+            System.out.println("consulta exitosa");
+
+            while (rs.next()) {
+                user.id = rs.getInt("id");
+                user.nombre = rs.getString("nombre");
+                user.id_Rol = Integer.parseInt(rs.getString("idRoles"));
+                user.dni = rs.getString("dni");
+                user.cel = rs.getString("cel");
+                user.tel = rs.getString("tel");
+                user.mail = rs.getString("mail");
+                user.estado = rs.getInt("estado");
+
+                if (user.dni.equals(clien)) {
+                    return user;
+                }
+
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "error de conexion" + e);
+
+        }
+
+        return user;
+
+    }
+
+         
+      
+        public void ActualizarUsuario(Usuarios user) {
+
+        String update;
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            update = "update usuarios set nombre = '" + user.nombre + "', dni = '" + user.dni + "', tel = '" + user.tel + "', cel = '" + user.cel + "', mail = '" + user.mail + "', idRoles = " + user.id_Rol + " where id = " + user.id;
+
+            System.out.println("resultado--> " + update);
+            int valor = inserData.executeUpdate(update);
+            System.out.println("retorno > " + valor);
+            if (valor == 1) {
+                JOptionPane.showMessageDialog(null, "Porveedor bloqueado exitosamente");
+            }
+
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
     /**
      *
      * @param producto
@@ -511,7 +581,8 @@ class BaseDatos {
 
     }
 
-    public void DesactivarUsuario(Usuarios usuarios) {
+    public void DesactivarUsuario(Usuarios usuarios, int accion) {
+        String update = null;
 
         try {
             con = null;
@@ -520,7 +591,12 @@ class BaseDatos {
             Statement inserData = con.createStatement();
             System.out.println("correcto conexion insert");
 
-            String update = "update usuarios set estado = 0 where dni = " + usuarios.dni;
+            if (accion == 1) {
+                update = "update usuarios set estado = 1 where id = " + usuarios.id;
+            } else if (accion == 0) {
+                update = "update usuarios set estado = 0 where id = " + usuarios.id;
+            }
+
             System.out.println("resultado--> " + update);
             int valor = inserData.executeUpdate(update);
             System.out.println("retorno > " + valor);

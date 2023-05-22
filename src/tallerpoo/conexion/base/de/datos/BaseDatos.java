@@ -57,6 +57,56 @@ class BaseDatos {
         }
 
     }
+    
+         public Usuarios ConsultarUsuarioTabla(JTable tabla, DefaultTableModel modeloTabla) {
+        Usuarios user = new Usuarios();
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement consulVenta = con.createStatement();
+            System.out.println("correcto conexion Consulta Venta");
+
+            Statement stmt = con.createStatement();// se crea para poder dar instrucciones a  la base de datos
+            ResultSet rs = stmt.executeQuery("SELECT * FROM usuarios");//consulta a realizar
+            System.out.println("consulta exitosa");
+
+            while (rs.next()) {
+                user.id = rs.getInt("id");
+                user.nombre = rs.getString("nombre");
+                user.dni = rs.getString("dni");
+                user.tel = rs.getString("tel");
+                user.cel = rs.getString("cel");
+                user.mail = rs.getString("mail");
+                user.estado = rs.getInt("estado");
+                user.id_Rol = rs.getInt("idRoles");
+
+
+                String[] info = new String[6];
+                info[0] = String.valueOf(user.nombre);
+                info[1] = String.valueOf(user.dni);
+                info[2] = String.valueOf(user.cel);
+                info[3] = String.valueOf(user.mail);
+                //info[4] = String.valueOf(user.id_Rol);
+                info[5] = String.valueOf(user.estado);
+                if(user.id_Rol == 7){
+                   info[4] = "Super-Admin";
+                }else if(user.id_Rol == 5){
+                   info[4] = "Admin";
+                }else{
+                   info[4] = "Vendedor";
+                }
+                             
+                modeloTabla.addRow(info);
+            }
+            return user;
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+        return user;
+
+    }
 
     /**
      *

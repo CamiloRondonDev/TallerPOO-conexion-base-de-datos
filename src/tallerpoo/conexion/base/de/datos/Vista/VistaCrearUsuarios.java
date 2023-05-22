@@ -34,7 +34,7 @@ public class VistaCrearUsuarios extends javax.swing.JFrame {
         modeloTablaCliente.addColumn("ESTADO");
         this.tabla_usuarios_id.setModel(modeloTablaCliente);
         
-      // user = bd.ConsultarClientesTabla(tabla_usuarios_id ,modeloTablaCliente);
+       user = bd.ConsultarUsuarioTabla(tabla_usuarios_id ,modeloTablaCliente);
     }
 
     /**

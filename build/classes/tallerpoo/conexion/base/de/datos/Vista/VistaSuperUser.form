@@ -82,14 +82,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="imgSuperAdmin" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="accion_realizar" min="-2" pref="150" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
+                      <Component id="imgSuperAdmin" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="68" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -112,9 +106,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="imgSuperAdmin" min="-2" pref="118" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="accion_realizar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -122,31 +114,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JComboBox" name="accion_realizar">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="11">
-            <StringItem index="0" value="Seleccione"/>
-            <StringItem index="1" value="Agregar Admin"/>
-            <StringItem index="2" value="Agregar Vendedor"/>
-            <StringItem index="3" value="Agregar Cliente"/>
-            <StringItem index="4" value="Agregar Proveedor"/>
-            <StringItem index="5" value="Agregar Producto"/>
-            <StringItem index="6" value="Bloq. Admin"/>
-            <StringItem index="7" value="Bloq. Vendedor"/>
-            <StringItem index="8" value="Bloq. Proveedor"/>
-            <StringItem index="9" value="Bloq. Cliente"/>
-            <StringItem index="10" value="Registro ventas"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="accion_realizarActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="imgSuperAdmin">
       <Properties>
         <Property name="text" type="java.lang.String" value="img"/>

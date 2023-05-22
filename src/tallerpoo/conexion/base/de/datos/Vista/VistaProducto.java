@@ -12,7 +12,7 @@ import tallerpoo.conexion.base.de.datos.entidades.Productos;
  *
  * @author hp
  */
-public class VistaCrearProducto extends javax.swing.JFrame {
+public class VistaProducto extends javax.swing.JFrame {
 
     Productos prod = new Productos();
     BaseDatos bd = new BaseDatos();
@@ -21,7 +21,7 @@ public class VistaCrearProducto extends javax.swing.JFrame {
     /**
      * Creates new form VistaCrearProducto
      */
-    public VistaCrearProducto() {
+    public VistaProducto() {
         initComponents();
         this.setLocationRelativeTo(null);//centrar ventana
         modeloTablaProd.addColumn("NOMBRE");
@@ -325,20 +325,21 @@ public class VistaCrearProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaCrearProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaCrearProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaCrearProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaCrearProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaCrearProducto().setVisible(true);
+                new VistaProducto().setVisible(true);
             }
         });
     }

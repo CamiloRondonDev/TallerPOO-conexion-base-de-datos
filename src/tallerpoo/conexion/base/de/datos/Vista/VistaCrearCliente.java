@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package tallerpoo.conexion.base.de.datos;
-
+import javax.swing.JOptionPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -242,14 +242,14 @@ public class VistaCrearCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_telCliente_textActionPerformed
 
-    private void mailCliente_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailCliente_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mailCliente_textActionPerformed
-
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
         dispose();//para cerrarla al ir a otra 
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void mailCliente_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailCliente_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mailCliente_textActionPerformed
 
     /**
      * @param args the command line arguments

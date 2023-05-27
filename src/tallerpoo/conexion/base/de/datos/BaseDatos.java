@@ -899,13 +899,8 @@ class BaseDatos {
         Proveedores provee = new Proveedores();
         try {
             con = null;
-            final String drive = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/poo";
-            String userBD = "root";
-            String password = "";
-
-            Class.forName(drive);
-            con = DriverManager.getConnection(url, userBD, password);
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM proveedor");
             System.out.println("consulta exitosa");
@@ -932,13 +927,8 @@ class BaseDatos {
         Productos prod = new Productos();
         try {
             con = null;
-            final String drive = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/poo";
-            String userBD = "root";
-            String password = "";
-
-            Class.forName(drive);
-            con = DriverManager.getConnection(url, userBD, password);
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM producto");
             System.out.println("consulta exitosa");

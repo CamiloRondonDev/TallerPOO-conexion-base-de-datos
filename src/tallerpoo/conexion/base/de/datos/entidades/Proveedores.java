@@ -11,11 +11,27 @@ package tallerpoo.conexion.base.de.datos;
  */
 class Proveedores {
     int id;
-    String nombre;
     String nit;
     String tel;
     String cel;
     String mail;
     String direccion;
     int estado;
+    
+        String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return  id +"-"+nombre;
+    }
+    
+    
 }

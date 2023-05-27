@@ -1,0 +1,9 @@
+tallerpoo.conexion.base.de.datos.VistaCompras$4
+tallerpoo.conexion.base.de.datos.VistaCompras$5
+tallerpoo.conexion.base.de.datos.VistaCompras$2
+tallerpoo.conexion.base.de.datos.VistaCompras$3
+tallerpoo.conexion.base.de.datos.VistaCompras
+tallerpoo.conexion.base.de.datos.VistaCompras$1
+tallerpoo.conexion.base.de.datos.VistaCompras$8
+tallerpoo.conexion.base.de.datos.VistaCompras$6
+tallerpoo.conexion.base.de.datos.VistaCompras$7

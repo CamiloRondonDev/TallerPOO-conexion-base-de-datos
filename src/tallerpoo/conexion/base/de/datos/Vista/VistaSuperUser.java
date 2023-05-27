@@ -234,6 +234,9 @@ public class VistaSuperUser extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        VistaCompras visCompras = new VistaCompras();
+        visCompras.setVisible(true);
+        
         
     }//GEN-LAST:event_jButton10ActionPerformed
 

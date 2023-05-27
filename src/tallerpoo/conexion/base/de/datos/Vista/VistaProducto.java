@@ -24,6 +24,7 @@ public class VistaProducto extends javax.swing.JFrame {
     public VistaProducto() {
         initComponents();
         this.setLocationRelativeTo(null);//centrar ventana
+        stock_id.enable(false);
         modeloTablaProd.addColumn("NOMBRE");
         modeloTablaProd.addColumn("PRECIO COMPRA");
         modeloTablaProd.addColumn("PRECIO VENTA");
@@ -191,10 +192,10 @@ public class VistaProducto extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(btnAgregar_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(btnAgregar_prod, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
                         .addComponent(btn_actu_prod)
-                        .addGap(32, 32, 32)
+                        .addGap(35, 35, 35)
                         .addComponent(btn_desac_prod)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,20 +252,6 @@ public class VistaProducto extends javax.swing.JFrame {
                 bd.ConsultarProductosTabla(tabla_Productos ,modeloTablaProd);
     }//GEN-LAST:event_btn_desac_prodActionPerformed
 
-    private void btnAgregar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_prodActionPerformed
-        // TODO add your handling code here:
-                prod.nombre = nombre_id.getText();
-                prod.precioCompra = Double.parseDouble( precioCom_id.getText());
-                prod.precioVenta = Double.parseDouble(precioVen_id.getText());
-                prod.stock = Integer.parseInt( stock_id.getText());
-
-        
-                bd.insertarProductos(prod);
-                DefaultTableModel model = (DefaultTableModel) tabla_Productos.getModel();
-                model.setRowCount(0);
-                bd.ConsultarProductosTabla(tabla_Productos ,modeloTablaProd);
-    }//GEN-LAST:event_btnAgregar_prodActionPerformed
-
     private void btn_actu_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actu_prodActionPerformed
 
                 prod.nombre = nombre_id.getText();
@@ -307,6 +294,19 @@ public class VistaProducto extends javax.swing.JFrame {
                     }
         
     }//GEN-LAST:event_tabla_ProductosMouseClicked
+
+    private void btnAgregar_prodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar_prodActionPerformed
+        // TODO add your handling code here:
+        prod.nombre = nombre_id.getText();
+        prod.precioCompra = Double.parseDouble( precioCom_id.getText());
+        prod.precioVenta = Double.parseDouble(precioVen_id.getText());
+        prod.stock = Integer.parseInt( stock_id.getText());
+
+        bd.insertarProductos(prod);
+        DefaultTableModel model = (DefaultTableModel) tabla_Productos.getModel();
+        model.setRowCount(0);
+        bd.ConsultarProductosTabla(tabla_Productos ,modeloTablaProd);
+    }//GEN-LAST:event_btnAgregar_prodActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,7 +358,7 @@ public class VistaProducto extends javax.swing.JFrame {
         nombre_id.setText("");
         precioCom_id.setText("");
         precioVen_id.setText("");
-        stock_id.setText("");
+        stock_id.setText("0");
 
     }
 

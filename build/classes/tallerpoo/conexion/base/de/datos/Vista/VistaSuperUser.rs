@@ -1,4 +1,9 @@
 tallerpoo.conexion.base.de.datos.VistaSuperUser$3
+tallerpoo.conexion.base.de.datos.VistaSuperUser$4
 tallerpoo.conexion.base.de.datos.VistaSuperUser$1
 tallerpoo.conexion.base.de.datos.VistaSuperUser$2
+tallerpoo.conexion.base.de.datos.VistaSuperUser$7
+tallerpoo.conexion.base.de.datos.VistaSuperUser$8
+tallerpoo.conexion.base.de.datos.VistaSuperUser$5
+tallerpoo.conexion.base.de.datos.VistaSuperUser$6
 tallerpoo.conexion.base.de.datos.VistaSuperUser

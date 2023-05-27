@@ -58,7 +58,7 @@ class BaseDatos {
 
     }
     
-         public Usuarios ConsultarUsuarioTabla(JTable tabla, DefaultTableModel modeloTabla) {
+        public Usuarios ConsultarUsuarioTabla(JTable tabla, DefaultTableModel modeloTabla) {
         Usuarios user = new Usuarios();
         try {
             con = null;
@@ -87,7 +87,6 @@ class BaseDatos {
                 info[1] = String.valueOf(user.dni);
                 info[2] = String.valueOf(user.cel);
                 info[3] = String.valueOf(user.mail);
-                //info[4] = String.valueOf(user.id_Rol);
                 info[5] = String.valueOf(user.estado);
                 if(user.id_Rol == 7){
                    info[4] = "Super-Admin";
@@ -363,6 +362,33 @@ class BaseDatos {
         }
 
     }
+    
+        public void ActualizarStockProd(Productos prod) {
+
+        String update;
+        try {
+            con = null;
+            Class.forName(DRIVE);
+            con = DriverManager.getConnection(URL, USER_BD, PASSWORD);
+            Statement inserData = con.createStatement();
+            System.out.println("correcto conexion insert");
+
+            System.out.println(prod.id +"__"+ prod.stock);
+            update = "UPDATE producto SET Stock = stock + " + prod.stock + " WHERE id ="+ prod.id;
+
+            System.out.println("resultado--> " + update);
+            int valor = inserData.executeUpdate(update);
+            System.out.println("retorno > " + valor);
+            if (valor == 1) {
+                JOptionPane.showMessageDialog(null, "correcto");
+            }
+
+        } catch (Exception e) {
+            System.out.println("error de conexion" + e);
+        }
+
+    }
+        
     public int RegistrarVenta(Cliente cliente, Productos product, int cantidad, float total) {
 
         Productos prod;

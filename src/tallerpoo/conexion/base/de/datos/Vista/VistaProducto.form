@@ -65,10 +65,10 @@
                       <Component id="jScrollPane1" alignment="0" min="-2" pref="444" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Component id="btnAgregar_prod" min="-2" pref="82" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnAgregar_prod" min="-2" pref="102" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btn_actu_prod" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btn_desac_prod" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>

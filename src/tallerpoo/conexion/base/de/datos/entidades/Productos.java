@@ -27,7 +27,7 @@ public class Productos {
 
     @Override
     public String toString() {
-        return  nombre ;
+        return  id +"-"+nombre ;
     }
 
     public int getStock() {
@@ -38,6 +38,8 @@ public class Productos {
         this.stock = stock;
     }
    
-    
+    public int getId() {
+        return id;
+    }
    
 }

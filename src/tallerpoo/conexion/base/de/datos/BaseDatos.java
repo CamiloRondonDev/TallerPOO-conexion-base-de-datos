@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -889,6 +890,72 @@ class BaseDatos {
 
         } catch (Exception e) {
             System.out.println("error de conexion" + e);
+        }
+
+    }
+    
+        public void DameProveedor( JComboBox combo) {
+        Connection con;
+        Proveedores provee = new Proveedores();
+        try {
+            con = null;
+            final String drive = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/poo";
+            String userBD = "root";
+            String password = "";
+
+            Class.forName(drive);
+            con = DriverManager.getConnection(url, userBD, password);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM proveedor");
+            System.out.println("consulta exitosa");
+
+            while (rs.next()) {
+                provee.setNombre(rs.getNString("nombre"));
+                provee.estado = rs.getInt("estado");
+                provee.id = rs.getInt("id");
+                if (provee.estado == 0) {
+                    continue;
+                }
+                combo.addItem(provee.toString());
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "error de conexion" + e);
+        }
+
+    }
+        
+            public void DameProducto(JComboBox combo) {
+        Connection con;
+        Productos prod = new Productos();
+        try {
+            con = null;
+            final String drive = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/poo";
+            String userBD = "root";
+            String password = "";
+
+            Class.forName(drive);
+            con = DriverManager.getConnection(url, userBD, password);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM producto");
+            System.out.println("consulta exitosa");
+
+            while (rs.next()) {
+                prod.setNombre(rs.getNString("nombre"));
+                prod.estado = rs.getInt("estado");
+                prod.id = rs.getInt("id");
+                if (prod.estado == 0) {
+                    continue;
+                }
+                combo.addItem(prod.toString());
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "error de conexion" + e);
         }
 
     }

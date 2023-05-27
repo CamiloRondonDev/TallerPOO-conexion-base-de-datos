@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tallerpoo.conexion.base.de.datos.BaseDatos;
@@ -36,10 +37,10 @@ public class VistaCompras extends javax.swing.JFrame {
         modeloTablaProd.addColumn("STOCK");
         modeloTablaProd.addColumn("ESTADO");
         this.tabla_Productos.setModel(modeloTablaProd);
-        DameProducto();
-        DameProveedor();
+        bd.DameProducto(comboProducto);
+        bd.DameProveedor(comboProveedor);
 
-        //prod = bd.ConsultarProductosTabla(tabla_Productos ,modeloTablaProd);
+        prod = bd.ConsultarProductosTabla(tabla_Productos ,modeloTablaProd);
     }
 
     /**
@@ -189,18 +190,6 @@ public class VistaCompras extends javax.swing.JFrame {
         int rowIndex = tabla_Productos.getSelectedRow();
         String nombre = tabla_Productos.getValueAt(rowIndex, 0).toString();
         prod = bd.ConsultarProductosNombre(nombre);
-//        nombre_id.setText(prod.nombre);
-//        precioCom_id.setText(String.valueOf(prod.precioCompra));
-//        precioVen_id.setText(String.valueOf(prod.precioVenta));
-//        stock_id.setText(String.valueOf(prod.stock));
-
-//        if(prod.estado == 0){
-//            btn_desac_prod.setText("ACTIVAR");
-//            aux = 1;
-//        }else if (prod.estado == 1){
-//            btn_desac_prod.setText("DESACTIVAR");
-//            aux = 0;
-//        }
 
     }//GEN-LAST:event_tabla_ProductosMouseClicked
 
@@ -272,71 +261,9 @@ public class VistaCompras extends javax.swing.JFrame {
 //
 //    }
 
-    public void DameProducto() {
-        Connection con;
-        Productos prod = new Productos();
-        try {
-            con = null;
-            final String drive = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/poo";
-            String userBD = "root";
-            String password = "";
 
-            Class.forName(drive);
-            con = DriverManager.getConnection(url, userBD, password);
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM producto");
-            System.out.println("consulta exitosa");
 
-            while (rs.next()) {
-                prod.setNombre(rs.getNString("nombre"));
-                prod.estado = rs.getInt("estado");
-                prod.id = rs.getInt("id");
-                if (prod.estado == 0) {
-                    continue;
-                }
-                comboProducto.addItem(prod.toString());
-            }
 
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "error de conexion" + e);
-        }
-
-    }
-
-    public void DameProveedor() {
-        Connection con;
-        Proveedores provee = new Proveedores();
-        try {
-            con = null;
-            final String drive = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/poo";
-            String userBD = "root";
-            String password = "";
-
-            Class.forName(drive);
-            con = DriverManager.getConnection(url, userBD, password);
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM proveedor");
-            System.out.println("consulta exitosa");
-
-            while (rs.next()) {
-                provee.setNombre(rs.getNString("nombre"));
-                provee.estado = rs.getInt("estado");
-                provee.id = rs.getInt("id");
-                if (provee.estado == 0) {
-                    continue;
-                }
-                comboProveedor.addItem(provee.toString());
-            }
-
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "error de conexion" + e);
-        }
-
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

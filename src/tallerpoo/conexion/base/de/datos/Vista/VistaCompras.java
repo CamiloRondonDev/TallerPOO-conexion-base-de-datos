@@ -212,7 +212,7 @@ public class VistaCompras extends javax.swing.JFrame {
         System.out.println("estooo -> "+parts[0]);
         prod.id = Integer.parseInt(parts[0]);
 
-        bd.ActualizarStockProd(prod);
+        bd.ActualizarStockProd(prod, 1);
         DefaultTableModel model = (DefaultTableModel) tabla_Productos.getModel();
         model.setRowCount(0);
         bd.ConsultarProductosTabla(tabla_Productos ,modeloTablaProd);

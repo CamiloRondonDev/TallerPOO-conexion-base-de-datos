@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javafx.scene.layout.Border;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -24,6 +25,7 @@ import tallerpoo.conexion.base.de.datos.entidades.Productos;
 public final class VistaVendedor extends javax.swing.JFrame {
 
     BaseDatos bd = new BaseDatos();
+    Cliente cliente = new Cliente();
     Productos prod;
     private ImageIcon imagen;
     private Icon icono;
@@ -42,7 +44,7 @@ public final class VistaVendedor extends javax.swing.JFrame {
         this.setLocationRelativeTo(imgVendedor);
         this.aggImg(this.imgVendedor, "src/tallerpoo/conexion/base/de/datos/img/cajero.png");
         DameCliente();
-        DameProducto();
+        bd.DameProducto(Combo_Producto);
         tipoProd = Combo_Producto.getSelectedItem().toString();
         mostrarNombreVend.setText(user.nombre);
         valUnit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -314,7 +316,6 @@ public final class VistaVendedor extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
 
-        Cliente cliente;
         int retro;
 
         prod = bd.ConsultarProductos(tipoProd, 0, 1);
@@ -332,11 +333,21 @@ public final class VistaVendedor extends javax.swing.JFrame {
         System.out.println("--------------------------fin--------------------------------");
 
         retro = bd.RegistrarVenta(cliente, prod, cantidad, total);
+        prod.stock = cantidad;
+        System.out.println("cantidad _" + prod.stock);
+        String[] parts = tipoProd.split("-");
+        prod.id = Integer.parseInt(parts[0]);
+        //prod.id = 1;
+        System.out.println("id_prod_" + prod.id);
+        
         if (retro == 1) {
+            bd.ActualizarStockProd(prod , 0);
             JOptionPane.showMessageDialog(null, "Venta registrada exitosamente");
         } else {
             JOptionPane.showMessageDialog(null, "Venta no registrada");
         }
+        
+
 
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -347,10 +358,13 @@ public final class VistaVendedor extends javax.swing.JFrame {
         Productos prod = new Productos();
         tipoUsuer = mostrarClienteCB.getSelectedItem().toString();
         tipoProd = Combo_Producto.getSelectedItem().toString();
+        
+        String[] parts = tipoProd.split("-");
+        System.out.println(parts[1] + " esta es");
         System.out.println(" nombre--->> " + tipoUsuer);
         System.out.println(" producto--->> " + tipoProd);
 
-        prod = bd.ConsultarProductos(tipoProd, 0 , 1);
+        prod = bd.ConsultarProductos(parts[1], 0 , 1);
 
         if (prod.stock < Integer.parseInt(cantidadProd_text.getText())) {
             JOptionPane.showMessageDialog(null, "Producto agotado \n quedan \n\t" + prod.stock);
@@ -477,37 +491,37 @@ public final class VistaVendedor extends javax.swing.JFrame {
      * esta funcion se encarga de conectarse a la base de datos consultar todos los productos
      * para posteriormete mostrarlos en el comboBox de manera dinámica
      */
-    public void DameProducto() {
-        Connection con;
-        Productos prod = new Productos();
-        try {
-            con = null;
-            final String drive = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/poo";
-            String userBD = "root";
-            String password = "";
-
-            Class.forName(drive);
-            con = DriverManager.getConnection(url, userBD, password);
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM producto");
-            System.out.println("consulta exitosa");
-
-            while (rs.next()) {
-                prod.setNombre(rs.getNString("nombre"));
-                prod.estado = rs.getInt("estado");
-                if(prod.estado == 0 ){
-                  continue;
-                }
-                Combo_Producto.addItem(prod.toString());
-            }
-
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "error de conexion" + e);
-        }
-
-    }
+//    public void DameProducto() {
+//        Connection con;
+//        Productos prod = new Productos();
+//        try {
+//            con = null;
+//            final String drive = "com.mysql.cj.jdbc.Driver";
+//            String url = "jdbc:mysql://localhost:3306/poo";
+//            String userBD = "root";
+//            String password = "";
+//
+//            Class.forName(drive);
+//            con = DriverManager.getConnection(url, userBD, password);
+//            Statement stmt = con.createStatement();
+//            ResultSet rs = stmt.executeQuery("SELECT * FROM producto");
+//            System.out.println("consulta exitosa");
+//
+//            while (rs.next()) {
+//                prod.setNombre(rs.getNString("nombre"));
+//                prod.estado = rs.getInt("estado");
+//                if(prod.estado == 0 ){
+//                  continue;
+//                }
+//                Combo_Producto.addItem(prod.toString());
+//            }
+//
+//        } catch (Exception e) {
+//
+//            JOptionPane.showMessageDialog(null, "error de conexion" + e);
+//        }
+//
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_Producto;

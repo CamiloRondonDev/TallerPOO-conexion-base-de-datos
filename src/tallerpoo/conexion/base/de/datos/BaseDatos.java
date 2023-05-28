@@ -364,8 +364,12 @@ class BaseDatos {
 
     }
     
-        public void ActualizarStockProd(Productos prod) {
-
+    /**
+     * 
+     * @param prod 
+     * @param accion - 1 para agregar (comprar) - 2 para quitar(vender)
+     */
+        public void ActualizarStockProd(Productos prod, int accion) {
         String update;
         try {
             con = null;
@@ -374,8 +378,12 @@ class BaseDatos {
             Statement inserData = con.createStatement();
             System.out.println("correcto conexion insert");
 
-            System.out.println(prod.id +"__"+ prod.stock);
-            update = "UPDATE producto SET Stock = stock + " + prod.stock + " WHERE id ="+ prod.id;
+            System.out.println(prod.id + "__" + prod.stock);
+            if (accion == 1) {
+                update = "UPDATE producto SET Stock = stock + " + prod.stock + " WHERE id =" + prod.id;
+            } else {
+                update = "UPDATE producto SET Stock = stock - " + prod.stock + " WHERE id =" + prod.id;
+            }
 
             System.out.println("resultado--> " + update);
             int valor = inserData.executeUpdate(update);
@@ -922,7 +930,7 @@ class BaseDatos {
 
     }
         
-            public void DameProducto(JComboBox combo) {
+      public void DameProducto(JComboBox combo) {
         Connection con;
         Productos prod = new Productos();
         try {
@@ -945,7 +953,9 @@ class BaseDatos {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "error de conexion" + e);
+            JOptionPane.showMessageDialog(null, "error de conexion"
+                    
+                    + e);
         }
 
     }
